@@ -117,6 +117,17 @@ form.addEventListener('submit', (e) => {
   }, 5000);
 });
 
+// Video placeholders — click to embed YouTube when data-video is set
+document.querySelectorAll('.video-placeholder').forEach(el => {
+  el.addEventListener('click', () => {
+    const url = el.dataset.video;
+    if (!url) return;
+    const id = url.match(/(?:youtu\.be\/|v=|shorts\/)([^&?/]+)/)?.[1];
+    if (!id) return;
+    el.innerHTML = `<iframe src="https://www.youtube.com/embed/${id}?autoplay=1" allow="autoplay; encrypted-media" allowfullscreen></iframe>`;
+  });
+});
+
 // Smooth active link highlight based on scroll
 const sections = document.querySelectorAll('section[id]');
 const navAnchors = document.querySelectorAll('.nav-links a');
