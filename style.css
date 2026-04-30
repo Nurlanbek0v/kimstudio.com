@@ -825,10 +825,31 @@ img { max-width: 100%; display: block; }
 .footer-bottom p { font-size: 0.78rem; color: var(--gray); }
 
 /* ===== WHATSAPP FLOAT ===== */
+.tiktok-float {
+  position: fixed;
+  bottom: 28px;
+  right: 164px;
+  z-index: 200;
+  width: 56px;
+  height: 56px;
+  background: #010101;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+.tiktok-float:hover {
+  transform: scale(1.1);
+  box-shadow: 0 8px 28px rgba(105,201,208,0.5);
+}
+
 .instagram-float {
   position: fixed;
-  bottom: 96px;
-  right: 28px;
+  bottom: 28px;
+  right: 96px;
   z-index: 200;
   width: 56px;
   height: 56px;
