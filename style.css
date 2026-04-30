@@ -630,15 +630,13 @@ img { max-width: 100%; display: block; }
   border: 1px solid rgba(232,83,122,0.2);
   box-shadow: 0 16px 48px rgba(232,83,122,0.1);
 }
-.show-icon { font-size: 3.5rem; margin-bottom: 20px; }
-.show-card h3 {
-  font-family: 'Playfair Display', serif;
-  font-size: 1.6rem;
-  color: var(--white);
-  margin-bottom: 12px;
-  letter-spacing: 2px;
+.show-photo {
+  width: 100%;
+  border-radius: 20px;
+  object-fit: cover;
+  box-shadow: 0 16px 48px rgba(0,0,0,0.5);
+  border: 1px solid rgba(232,83,122,0.2);
 }
-.show-card p { color: var(--gray); font-size: 0.9rem; }
 
 /* ===== RULES ===== */
 .rules { background: var(--dark); }
