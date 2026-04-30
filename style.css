@@ -825,68 +825,32 @@ img { max-width: 100%; display: block; }
 .footer-bottom p { font-size: 0.78rem; color: var(--gray); }
 
 /* ===== WHATSAPP FLOAT ===== */
-.tiktok-float {
+.social-float-group {
   position: fixed;
-  bottom: 16px;
+  bottom: 20px;
   right: 16px;
   z-index: 200;
-  width: 56px;
-  height: 56px;
-  background: #010101;
-  border-radius: 50%;
   display: flex;
+  flex-direction: column;
+  gap: 10px;
   align-items: center;
-  justify-content: center;
-  color: #fff;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.5);
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
-}
-.tiktok-float:hover {
-  transform: scale(1.1);
-  box-shadow: 0 8px 28px rgba(105,201,208,0.5);
 }
 
-.instagram-float {
-  position: fixed;
-  bottom: 80px;
-  right: 16px;
-  z-index: 200;
-  width: 56px;
-  height: 56px;
-  background: radial-gradient(circle at 30% 110%, #f09433, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888);
+.social-fab {
+  width: 52px;
+  height: 52px;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   color: #fff;
-  box-shadow: 0 4px 20px rgba(188,24,136,0.45);
   transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
-.instagram-float:hover {
-  transform: scale(1.1);
-  box-shadow: 0 8px 28px rgba(188,24,136,0.6);
-}
+.social-fab:hover { transform: scale(1.1); }
 
-.whatsapp-float {
-  position: fixed;
-  bottom: 144px;
-  right: 16px;
-  z-index: 200;
-  width: 56px;
-  height: 56px;
-  background: #25d366;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #fff;
-  box-shadow: 0 4px 20px rgba(37,211,102,0.45);
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
-}
-.whatsapp-float:hover {
-  transform: scale(1.1);
-  box-shadow: 0 8px 28px rgba(37,211,102,0.6);
-}
+.fab-whatsapp  { background: #25d366; box-shadow: 0 4px 16px rgba(37,211,102,0.4); }
+.fab-instagram { background: radial-gradient(circle at 30% 110%, #f09433, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888); box-shadow: 0 4px 16px rgba(188,24,136,0.4); }
+.fab-tiktok    { background: #010101; box-shadow: 0 4px 16px rgba(0,0,0,0.5); }
 
 /* ===== MAP ===== */
 .map-embed {
