@@ -827,8 +827,8 @@ img { max-width: 100%; display: block; }
 /* ===== WHATSAPP FLOAT ===== */
 .tiktok-float {
   position: fixed;
-  bottom: 28px;
-  right: 28px;
+  bottom: 16px;
+  right: 16px;
   z-index: 200;
   width: 56px;
   height: 56px;
@@ -848,8 +848,8 @@ img { max-width: 100%; display: block; }
 
 .instagram-float {
   position: fixed;
-  bottom: 96px;
-  right: 28px;
+  bottom: 80px;
+  right: 16px;
   z-index: 200;
   width: 56px;
   height: 56px;
@@ -869,8 +869,8 @@ img { max-width: 100%; display: block; }
 
 .whatsapp-float {
   position: fixed;
-  bottom: 164px;
-  right: 28px;
+  bottom: 144px;
+  right: 16px;
   z-index: 200;
   width: 56px;
   height: 56px;
