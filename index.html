@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>KimStudio — Студия современных танцев в Кара-Балте</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <!-- NAVIGATION -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-container">
+      <a href="#home" class="nav-brand">
+        <img src="logo.png" alt="KimStudio" class="nav-logo-img" />
+      </a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#about">О нас</a></li>
+        <li><a href="#directions">Направления</a></li>
+        <li><a href="#schedule">Расписание</a></li>
+        <li><a href="#show">KimS Show</a></li>
+        <li><a href="#rules">Правила</a></li>
+        <li><a href="#contact">Контакты</a></li>
+      </ul>
+      <button class="burger" id="burger" aria-label="Меню">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero" id="home">
+    <div class="hero-bg"></div>
+    <div class="hero-content">
+      <img src="logo.png" alt="KimStudio" class="hero-logo" />
+      <p class="hero-sub">Кара-Балта · Жайылский район</p>
+      <h1 class="hero-title">KIMSTUDIO</h1>
+      <p class="hero-tagline">СТУДИЯ СОВРЕМЕННЫХ ТАНЦЕВ</p>
+      <p class="hero-desc">HIP-HOP · KPOP · AFRO DANCE · GIRLY CHOREO · LADY DANCE</p>
+      <div class="hero-buttons">
+        <a href="#schedule" class="btn btn-primary">Расписание</a>
+        <a href="#contact" class="btn btn-outline">Записаться</a>
+      </div>
+    </div>
+    <div class="hero-scroll">
+      <div class="scroll-arrow"></div>
+    </div>
+  </section>
+
+  <!-- STATS -->
+  <section class="stats">
+    <div class="stats-container">
+      <div class="stat-item">
+        <span class="stat-number" data-target="5">0</span>
+        <span class="stat-label">Лет работы</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-number" data-target="6">0</span>
+        <span class="stat-label">Направлений</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-number" data-target="5">0</span>
+        <span class="stat-label">Педагогов</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-number" data-target="200">0</span>
+        <span class="stat-label">Учеников</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="about section" id="about">
+    <div class="container">
+      <div class="about-content">
+        <div class="about-text">
+          <span class="section-tag">О студии</span>
+          <h2 class="section-title">Наша школа танцев</h2>
+          <p>KimStudio — студия современных танцев в Кара-Балте. Мы обучаем детей и взрослых с нуля. Сильные хореографы, тёплая атмосфера и современные стили — всё для того, чтобы вы полюбили танец.</p>
+          <div class="about-cards">
+            <div class="about-card">
+              <span class="about-card-icon">👥</span>
+              <span>Групповые занятия</span>
+            </div>
+            <div class="about-card">
+              <span class="about-card-icon">🎯</span>
+              <span>Индивидуальные занятия</span>
+            </div>
+            <div class="about-card">
+              <span class="about-card-icon">🎬</span>
+              <span>Постановка флешмоба</span>
+            </div>
+            <div class="about-card">
+              <span class="about-card-icon">💃</span>
+              <span>Постановка вальса</span>
+            </div>
+          </div>
+          <ul class="about-features">
+            <li><span class="check">✓</span> Танцы для детей и взрослых</li>
+            <li><span class="check">✓</span> Современные стили: HIP-HOP, KPOP, AFRO DANCE, GIRLY CHOREO</li>
+            <li><span class="check">✓</span> Сильные хореографы</li>
+            <li><span class="check">✓</span> Научим танцевать с нуля</li>
+          </ul>
+        </div>
+        <div class="about-image">
+          <div class="image-placeholder">
+            <div class="logo-big">KIM<span>STUDIO</span></div>
+            <p>Студия современных танцев</p>
+            <p class="addr-tag">Кара-Балта</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DIRECTIONS -->
+  <section class="directions section" id="directions">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Что мы преподаём</span>
+        <h2 class="section-title">Направления</h2>
+        <p class="section-desc">Современные стили для детей, подростков и взрослых</p>
+      </div>
+      <div class="directions-grid">
+        <div class="direction-card">
+          <div class="card-icon">🎤</div>
+          <h3>HIP-HOP</h3>
+          <p>Уличная энергия и свобода движений. Базовые и продвинутые техники хип-хопа для разных возрастов.</p>
+          <span class="card-age">9 лет и старше</span>
+        </div>
+        <div class="direction-card">
+          <div class="card-icon">🌸</div>
+          <h3>KPOP</h3>
+          <p>Яркие танцы в стиле корейских поп-звёзд. Актуальные хореографии из K-Pop клипов и сцен.</p>
+          <span class="card-age">7 лет и старше</span>
+        </div>
+        <div class="direction-card">
+          <div class="card-icon">🌴</div>
+          <h3>AFRO DANCE</h3>
+          <p>Зажигательные африканские ритмы. Afrobeats, Amapiano — живые и экспрессивные стили.</p>
+          <span class="card-age">9 лет и старше</span>
+        </div>
+        <div class="direction-card">
+          <div class="card-icon">✨</div>
+          <h3>GIRLY CHOREO</h3>
+          <p>Женственная и стильная хореография. Раскрываем пластику, уверенность и харизму.</p>
+          <span class="card-age">Подростки и взрослые</span>
+        </div>
+        <div class="direction-card">
+          <div class="card-icon">👠</div>
+          <h3>LADY DANCE</h3>
+          <p>Элегантная женская хореография. Для мамочек и взрослых женщин — красота движений и уверенность в себе.</p>
+          <span class="card-age">20 лет и старше</span>
+        </div>
+        <div class="direction-card">
+          <div class="card-icon">🌟</div>
+          <h3>BABY / CHOREO</h3>
+          <p>Детские группы с основами хореографии. Развитие ритма, пластики и любви к танцу с раннего возраста.</p>
+          <span class="card-age">4–13 лет</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SCHEDULE -->
+  <section class="schedule section" id="schedule">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">2025–2026 учебный год</span>
+        <h2 class="section-title">Расписание</h2>
+        <p class="section-desc">Актуальное расписание всех групп</p>
+      </div>
+
+      <div class="schedule-blocks">
+
+        <!-- Block 1: Mon/Wed/Fri -->
+        <div class="schedule-block">
+          <div class="schedule-block-header">
+            <span class="days-badge">ПН / СР / ПТ</span>
+          </div>
+          <div class="schedule-rows">
+            <div class="schedule-row">
+              <div class="sched-time">16:30 – 17:30</div>
+              <div class="sched-info">
+                <span class="sched-name">Baby 1</span>
+                <span class="sched-age">4–6 лет</span>
+              </div>
+              <div class="sched-teacher">Алиша</div>
+            </div>
+            <div class="schedule-row">
+              <div class="sched-time">17:30 – 18:30</div>
+              <div class="sched-info">
+                <span class="sched-name">Baby 2</span>
+                <span class="sched-age">7–9 лет</span>
+              </div>
+              <div class="sched-teacher">Бема</div>
+            </div>
+            <div class="schedule-row">
+              <div class="sched-time">18:30 – 19:30</div>
+              <div class="sched-info">
+                <span class="sched-name">Baby 3</span>
+                <span class="sched-age">7–9 лет</span>
+              </div>
+              <div class="sched-teacher">Бема</div>
+            </div>
+            <div class="schedule-row highlight">
+              <div class="sched-time">19:30 – 20:30</div>
+              <div class="sched-info">
+                <span class="sched-name">Lady Dance</span>
+                <span class="sched-age">20+ · Пн/Ср</span>
+              </div>
+              <div class="sched-teacher">Алиша</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Block 2: Tue/Thu -->
+        <div class="schedule-block">
+          <div class="schedule-block-header">
+            <span class="days-badge days-badge--purple">ВТ / ЧТ</span>
+          </div>
+          <div class="schedule-rows">
+            <div class="schedule-row">
+              <div class="sched-time">17:00 – 18:00</div>
+              <div class="sched-info">
+                <span class="sched-name">Choreo</span>
+                <span class="sched-age">9–13 лет</span>
+              </div>
+              <div class="sched-teacher">Саша</div>
+            </div>
+            <div class="schedule-row">
+              <div class="sched-time">17:00 – 18:00</div>
+              <div class="sched-info">
+                <span class="sched-name">Choreo</span>
+                <span class="sched-age">14+ лет</span>
+              </div>
+              <div class="sched-teacher">Аризат</div>
+            </div>
+            <div class="schedule-row">
+              <div class="sched-time">18:30 – 19:40</div>
+              <div class="sched-info">
+                <span class="sched-name">Afro Dance</span>
+                <span class="sched-age">9 лет и старше</span>
+              </div>
+              <div class="sched-teacher">Саша / Аризат</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Block 3: Sat/Sun -->
+        <div class="schedule-block">
+          <div class="schedule-block-header">
+            <span class="days-badge days-badge--green">СБ / ВСК</span>
+          </div>
+          <div class="schedule-rows">
+            <div class="schedule-row">
+              <div class="sched-time">13:00 – 14:20</div>
+              <div class="sched-info">
+                <span class="sched-name">HipHop</span>
+                <span class="sched-age">9–11 лет</span>
+              </div>
+              <div class="sched-teacher">Риана</div>
+            </div>
+            <div class="schedule-row">
+              <div class="sched-time">14:20 – 15:50</div>
+              <div class="sched-info">
+                <span class="sched-name">HipHop</span>
+                <span class="sched-age">12 лет и старше</span>
+              </div>
+              <div class="sched-teacher">Риана</div>
+            </div>
+            <div class="schedule-row">
+              <div class="sched-time">16:00 – 17:20</div>
+              <div class="sched-info">
+                <span class="sched-name">Girly Choreo</span>
+                <span class="sched-age">14–18 лет</span>
+              </div>
+              <div class="sched-teacher">Айтунук</div>
+            </div>
+            <div class="schedule-row highlight">
+              <div class="sched-time">17:30 – 18:30</div>
+              <div class="sched-info">
+                <span class="sched-name">Choreo</span>
+                <span class="sched-age">10 лет и старше</span>
+              </div>
+              <div class="sched-teacher">Алиша</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="schedule-note">
+        Открыт набор в группы: <strong>Baby 1 · Baby 3 · Lady Dance</strong>. Первое пробное занятие — бесплатно!
+      </div>
+    </div>
+  </section>
+
+  <!-- KIMS SHOW -->
+  <section class="show section" id="show">
+    <div class="container">
+      <div class="show-content">
+        <div class="show-text">
+          <span class="section-tag">Для мероприятий</span>
+          <h2 class="section-title">KIMS SHOW</h2>
+          <p>Принимаем заказы на торжества! Мы украсим любое ваше мероприятие красивыми и интересными танцами.</p>
+          <ul class="show-list">
+            <li>🎉 Свадьбы и юбилеи</li>
+            <li>🎂 Дни рождения</li>
+            <li>🏢 Корпоративные мероприятия</li>
+            <li>🎭 Зажигательные интерактивы с гостями</li>
+            <li>💃 Постановка вальса для молодожёнов</li>
+            <li>🎬 Постановка флешмоба</li>
+          </ul>
+          <a href="#contact" class="btn btn-primary">Заказать выступление</a>
+        </div>
+        <div class="show-visual">
+          <div class="show-card">
+            <div class="show-icon">🎭</div>
+            <h3>KIMS SHOW</h3>
+            <p>Самые зажигательные интерактивы с гостями</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RULES -->
+  <section class="rules section" id="rules">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Важно знать</span>
+        <h2 class="section-title">Правила посещения</h2>
+        <p class="section-desc">Соблюдение правил помогает создать комфортную атмосферу для всех</p>
+      </div>
+      <div class="rules-grid">
+        <div class="rule-item">
+          <span class="rule-num">01</span>
+          <p>Вход строго по действующему абонементу</p>
+        </div>
+        <div class="rule-item">
+          <span class="rule-num">02</span>
+          <p>Вход только при наличии сменной чистой обуви</p>
+        </div>
+        <div class="rule-item">
+          <span class="rule-num">03</span>
+          <p>Запрещено входить посторонним лицам</p>
+        </div>
+        <div class="rule-item">
+          <span class="rule-num">04</span>
+          <p>Родители детей до 10 лет допускаются только на пробном уроке</p>
+        </div>
+        <div class="rule-item">
+          <span class="rule-num">05</span>
+          <p>Запрещено приносить еду, газированные и алкогольные напитки</p>
+        </div>
+        <div class="rule-item">
+          <span class="rule-num">06</span>
+          <p>Запрещено посещать тренировки при плохом самочувствии</p>
+        </div>
+        <div class="rule-item">
+          <span class="rule-num">07</span>
+          <p>Не оставлять мусор на территории студии</p>
+        </div>
+        <div class="rule-item">
+          <span class="rule-num">08</span>
+          <p>Студия не несёт ответственности за сохранность личных вещей</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact section" id="contact">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Мы рядом</span>
+        <h2 class="section-title">Контакты</h2>
+        <p class="section-desc">Запишитесь на пробное занятие — первое занятие бесплатно!</p>
+      </div>
+      <div class="contact-content">
+        <div class="contact-info">
+          <div class="contact-item">
+            <div class="contact-icon">📍</div>
+            <div>
+              <h4>Адрес</h4>
+              <p>г. Кара-Балта, ул. Гвардейская 54,<br>здание «Татина»<br>Жайылский район, Чуйская область</p>
+            </div>
+          </div>
+          <div class="map-embed">
+            <iframe
+              src="https://maps.google.com/maps?q=%D0%9A%D0%B0%D1%80%D0%B0-%D0%91%D0%B0%D0%BB%D1%82%D0%B0+%D0%93%D0%B2%D0%B0%D1%80%D0%B4%D0%B5%D0%B9%D1%81%D0%BA%D0%B0%D1%8F+54&output=embed"
+              width="100%" height="220" style="border:0;" allowfullscreen loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade" title="KimStudio на карте">
+            </iframe>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">📞</div>
+            <div>
+              <h4>Телефон</h4>
+              <p><a href="tel:+996707430777">+996 707 430 777</a></p>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">📸</div>
+            <div>
+              <h4>Instagram</h4>
+              <p><a href="https://www.instagram.com/kimstudioo/" target="_blank">@kimstudioo</a></p>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">🕐</div>
+            <div>
+              <h4>Режим работы</h4>
+              <p>Пн–Пт: 16:30 – 20:30<br>Сб–Вск: 13:00 – 18:30</p>
+            </div>
+          </div>
+          <div class="social-links">
+            <a href="https://www.instagram.com/kimstudioo/" target="_blank" class="social-btn instagram">Instagram</a>
+            <a href="https://wa.me/996707430777" target="_blank" class="social-btn whatsapp">WhatsApp</a>
+          </div>
+        </div>
+        <form class="contact-form" id="contactForm">
+          <h3>Записаться на занятие</h3>
+          <div class="form-group">
+            <input type="text" name="name" placeholder="Ваше имя" required />
+          </div>
+          <div class="form-group">
+            <input type="tel" name="phone" placeholder="Номер телефона" required />
+          </div>
+          <div class="form-group">
+            <input type="email" name="email" placeholder="Email (необязательно — для подтверждения)" />
+          </div>
+          <div class="form-group">
+            <select name="direction">
+              <option value="" disabled selected>Выберите направление</option>
+              <option>Baby 1 (4–6 лет)</option>
+              <option>Baby 2 (7–9 лет)</option>
+              <option>Baby 3 (7–9 лет)</option>
+              <option>HipHop (9–11 лет)</option>
+              <option>HipHop (12+ лет)</option>
+              <option>Choreo (9–13 лет)</option>
+              <option>Choreo (14+ лет)</option>
+              <option>Afro Dance</option>
+              <option>Girly Choreo</option>
+              <option>Lady Dance (20+)</option>
+              <option>KIMS SHOW (заказ выступления)</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <textarea name="message" placeholder="Дополнительная информация (возраст, вопросы...)" rows="4"></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary btn-full">Отправить заявку</button>
+          <p class="form-note" id="formNote">Мы свяжемся с вами в течение дня</p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-brand">
+        <span class="logo">KIM<span>STUDIO</span></span>
+        <p>Студия современных танцев.<br>ул. Гвардейская 54, здание «Татина»<br>г. Кара-Балта, Чуйская область, Кыргызстан</p>
+      </div>
+      <div class="footer-links">
+        <a href="#about">О студии</a>
+        <a href="#directions">Направления</a>
+        <a href="#schedule">Расписание</a>
+        <a href="#show">KimS Show</a>
+        <a href="#rules">Правила</a>
+        <a href="#contact">Контакты</a>
+      </div>
+      <div class="footer-social">
+        <a href="https://www.instagram.com/kimstudioo/" target="_blank">Instagram @kimstudioo</a>
+        <a href="https://wa.me/996707430777" target="_blank">WhatsApp</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2025 KimStudio. Все права защищены.</p>
+    </div>
+  </footer>
+
+  <!-- WhatsApp floating button -->
+  <a href="https://wa.me/996707430777" target="_blank" class="whatsapp-float" aria-label="WhatsApp">
+    <svg viewBox="0 0 24 24" fill="currentColor" width="28" height="28">
+      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+    </svg>
+  </a>
+
+  <script src="script.js"></script>
+</body>
+</html>
