@@ -298,77 +298,8 @@
         <button onclick="closeModal()" style="background:none;border:none;color:var(--gray);font-size:1.5rem;cursor:pointer;line-height:1;">×</button>
       </div>
 
-      <div style="padding:28px 24px;">
-
-        <!-- STEP 1 -->
-        <div id="modalStep1">
-          <form id="modalPayForm">
-            <div class="form-group"><input type="text" id="m_childName" placeholder="Имя ребенка *" required autocomplete="off" /></div>
-            <div class="form-group"><input type="text" id="m_parentName" placeholder="Имя родителя *" required autocomplete="off" /></div>
-            <div class="form-group"><input type="tel" id="m_phone" placeholder="Номер телефона *" required autocomplete="tel" /></div>
-            <div class="form-group">
-              <select id="m_group" required>
-                <option value="" disabled selected>Выберите группу *</option>
-                <optgroup label="Понедельник / Среда / Пятница">
-                  <option>Хип-хоп 9–13 лет (Пн/Ср/Пт)</option>
-                  <option>Бейби 1, 4–6 лет (Пн/Ср/Пт)</option>
-                  <option>Бейби 2, 7–9 лет (Пн/Ср/Пт)</option>
-                  <option>Бейби 3, 7–9 лет (Пн/Ср/Пт)</option>
-                  <option>Lady Dance 25+ (Пн/Ср)</option>
-                </optgroup>
-                <optgroup label="Вторник / Четверг">
-                  <option>Choreo 9–13 лет (Вт/Чт)</option>
-                  <option>Choreo 14+ лет (Вт/Чт)</option>
-                  <option>Афро 12+ (Вт/Чт)</option>
-                </optgroup>
-                <optgroup label="Суббота / Воскресенье">
-                  <option>Хип-хоп 9–11 лет (Сб/Вск)</option>
-                  <option>Хип-хоп 12+ (Сб/Вск)</option>
-                  <option>Girly Choreo 14+ (Сб/Вск)</option>
-                  <option>KPOP + Choreo 12+ (Сб/Вск)</option>
-                  <option>Choreo 9–13 лет (Сб/Вск)</option>
-                </optgroup>
-              </select>
-            </div>
-            <div class="form-group">
-              <select id="m_month" required>
-                <option value="" disabled selected>Месяц оплаты *</option>
-                <option>Январь</option><option>Февраль</option><option>Март</option>
-                <option>Апрель</option><option>Май</option><option>Июнь</option>
-                <option>Июль</option><option>Август</option><option>Сентябрь</option>
-                <option>Октябрь</option><option>Ноябрь</option><option>Декабрь</option>
-              </select>
-            </div>
-            <button type="submit" class="btn btn-primary btn-full" style="margin-top:8px;">Получить реквизиты →</button>
-          </form>
-        </div>
-
-        <!-- STEP 2 -->
-        <div id="modalStep2" style="display:none;">
-          <div class="ref-box">
-            <p class="ref-label">Код платежа</p>
-            <div class="ref-code" id="m_refCode">—</div>
-          </div>
-          <div class="summary-info" id="m_summaryInfo"></div>
-          <div class="pay-info-list">
-            <div class="pay-row"><span class="pay-row-label">Банк</span><span class="pay-row-value">MBank / О!Деньги</span></div>
-            <div class="pay-row"><span class="pay-row-label">Номер</span><span class="pay-row-value highlight">+996 (555) 915 883</span></div>
-            <div class="pay-row"><span class="pay-row-label">Получатель</span><span class="pay-row-value">Алиша К.</span></div>
-            <div class="pay-row"><span class="pay-row-label">Комментарий</span><span class="pay-row-value highlight" id="m_refInRow">—</span></div>
-          </div>
-          <div class="instruction-box">
-            1. Переведите сумму на номер выше<br>
-            2. В комментарии укажите <strong id="m_refInNote">код</strong><br>
-            3. Отправьте скриншот чека в WhatsApp
-          </div>
-          <a class="btn-wa" id="m_waBtn" href="#" target="_blank">
-            <svg viewBox="0 0 24 24" fill="currentColor" width="22" height="22"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-            Отправить чек в WhatsApp
-          </a>
-          <button class="btn-reset" onclick="resetModal()">← Новая оплата</button>
-        </div>
-
-      </div>
+      <iframe src="https://tally.so/embed/oblx51?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1"
+        width="100%" height="700" frameborder="0" style="background:var(--dark-2);border-radius:0 0 20px 20px;display:block;"></iframe>
     </div>
   </div>
 
@@ -436,47 +367,14 @@
       });
     });
 
-    function genRef(childName) {
-      const letters = childName.replace(/\s+/g,'').toUpperCase().replace(/[^A-ZА-ЯЁ]/gi,'').slice(0,3).padEnd(3,'X');
-      const digits = Math.floor(100 + Math.random() * 900);
-      return `KS-${letters}-${digits}`;
-    }
-
     function closeModal() {
       document.getElementById('tallyModal').style.display = 'none';
-    }
-
-    function resetModal() {
-      document.getElementById('modalPayForm').reset();
-      document.getElementById('modalStep1').style.display = 'block';
-      document.getElementById('modalStep2').style.display = 'none';
     }
 
     document.getElementById('tallyModal').addEventListener('click', function(e) {
       if (e.target === this) closeModal();
     });
-
-    document.getElementById('modalPayForm').addEventListener('submit', function(e) {
-      e.preventDefault();
-      const child  = document.getElementById('m_childName').value.trim();
-      const parent = document.getElementById('m_parentName').value.trim();
-      const phone  = document.getElementById('m_phone').value.trim();
-      const group  = document.getElementById('m_group').value;
-      const month  = document.getElementById('m_month').value;
-      const ref = genRef(child);
-
-      document.getElementById('m_refCode').textContent   = ref;
-      document.getElementById('m_refInRow').textContent  = ref;
-      document.getElementById('m_refInNote').textContent = ref;
-      document.getElementById('m_summaryInfo').innerHTML =
-        `Ребенок: <span>${child}</span><br>Родитель: <span>${parent}</span><br>Телефон: <span>${phone}</span><br>Группа: <span>${group}</span><br>Месяц: <span>${month}</span>`;
-
-      const waText = [`📋 Оплата абонемента KimStudio`,`Код: ${ref}`,``,`Ребенок: ${child}`,`Родитель: ${parent}`,`Телефон: ${phone}`,`Группа: ${group}`,`Месяц: ${month}`,``,`(Прикрепляю скриншот чека)`].join('\n');
-      document.getElementById('m_waBtn').href = `https://wa.me/996555915883?text=${encodeURIComponent(waText)}`;
-
-      document.getElementById('modalStep1').style.display = 'none';
-      document.getElementById('modalStep2').style.display = 'block';
-    });
   </script>
+  <script src="https://tally.so/widgets/embed.js"></script>
 </body>
 </html>
