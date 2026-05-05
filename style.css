@@ -1063,3 +1063,6 @@ img { max-width: 100%; display: block; }
   .rules-grid { grid-template-columns: 1fr; }
   .about-cards { grid-template-columns: 1fr; }
 }
+@media (max-width: 600px) {
+  .payment-info-grid { grid-template-columns: 1fr !important; }
+}
