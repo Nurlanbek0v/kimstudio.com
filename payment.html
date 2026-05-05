@@ -245,19 +245,66 @@
     <div class="container">
       <span class="section-tag">KimStudio</span>
       <h1 class="section-title">Оплата абонемента</h1>
-      <p class="section-desc" style="margin:0 auto;">Заполните форму — получите реквизиты для оплаты</p>
+      <p class="section-desc" style="margin:0 auto;">Заполните форму — получите реквизиты и оплатите через MBank</p>
     </div>
   </div>
 
   <!-- MAIN -->
-  <div class="payment-wrap" style="text-align:center;padding:60px 24px 100px;">
-    <p style="color:rgba(255,255,255,0.6);font-size:1rem;margin-bottom:36px;line-height:1.7;">
-      Заполните форму, укажите данные ребёнка и группу.<br>
-      На следующем шаге увидите реквизиты и загрузите чек.
-    </p>
-    <a href="https://tally.so/r/oblx51" target="_blank" class="btn btn-primary" style="font-size:1.1rem;padding:16px 48px;border-radius:50px;display:inline-block;">
-      Заполнить форму →
-    </a>
+  <div class="payment-wrap">
+
+    <!-- INFO CARDS -->
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;margin-bottom:40px;">
+      <div style="background:var(--dark-3);border:1px solid rgba(255,255,255,0.06);border-radius:14px;padding:24px;text-align:center;">
+        <div style="font-size:1.8rem;margin-bottom:8px;">💳</div>
+        <div style="font-size:0.75rem;color:var(--pink-light);letter-spacing:2px;text-transform:uppercase;margin-bottom:6px;">Стоимость</div>
+        <div style="font-size:1.1rem;font-weight:600;color:var(--white);">от 3 000 сом</div>
+      </div>
+      <div style="background:var(--dark-3);border:1px solid rgba(255,255,255,0.06);border-radius:14px;padding:24px;text-align:center;">
+        <div style="font-size:1.8rem;margin-bottom:8px;">⚡</div>
+        <div style="font-size:0.75rem;color:var(--pink-light);letter-spacing:2px;text-transform:uppercase;margin-bottom:6px;">Подтверждение</div>
+        <div style="font-size:1.1rem;font-weight:600;color:var(--white);">в течение 1–3 часов</div>
+      </div>
+      <div style="background:var(--dark-3);border:1px solid rgba(255,255,255,0.06);border-radius:14px;padding:24px;text-align:center;">
+        <div style="font-size:1.8rem;margin-bottom:8px;">🔒</div>
+        <div style="font-size:0.75rem;color:var(--pink-light);letter-spacing:2px;text-transform:uppercase;margin-bottom:6px;">Безопасно</div>
+        <div style="font-size:1.1rem;font-weight:600;color:var(--white);">Проверяет администратор</div>
+      </div>
+    </div>
+
+    <!-- QR + BUTTON -->
+    <div style="display:flex;flex-direction:column;align-items:center;gap:32px;">
+
+      <div style="background:var(--dark-3);border:1px solid rgba(232,83,122,0.2);border-radius:16px;padding:32px;text-align:center;max-width:320px;width:100%;">
+        <p style="font-size:0.75rem;color:var(--pink-light);letter-spacing:2px;text-transform:uppercase;margin-bottom:16px;">MBank / О!Деньги</p>
+        <img src="mbank-qr.jpeg" alt="QR для оплаты MBank" style="border-radius:10px;width:200px;height:auto;" />
+        <p style="margin-top:16px;font-size:1.1rem;font-weight:700;color:var(--white);">+996 (555) 915 883</p>
+        <p style="font-size:0.8rem;color:var(--gray);margin-top:4px;">Получатель: Алиша К. (MBank)</p>
+      </div>
+
+      <div style="text-align:center;">
+        <p style="color:rgba(255,255,255,0.5);font-size:0.88rem;margin-bottom:20px;line-height:1.7;">
+          1. Отсканируйте QR или переведите на номер<br>
+          2. Заполните форму и загрузите чек об оплате<br>
+          3. Администратор подтвердит в течение 1–3 часов
+        </p>
+        <button onclick="document.getElementById('tallyModal').style.display='flex'" class="btn btn-primary" style="font-size:1.1rem;padding:16px 48px;border-radius:50px;border:none;cursor:pointer;">
+          Оплатить абонемент →
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- TALLY MODAL -->
+  <div id="tallyModal" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.85);z-index:1000;align-items:center;justify-content:center;padding:20px;">
+    <div style="background:var(--dark-2);border-radius:20px;width:100%;max-width:620px;max-height:90vh;overflow:hidden;position:relative;display:flex;flex-direction:column;">
+      <div style="display:flex;justify-content:space-between;align-items:center;padding:20px 24px;border-bottom:1px solid rgba(255,255,255,0.06);">
+        <span style="font-weight:600;color:var(--white);">Оплата абонемента</span>
+        <button onclick="document.getElementById('tallyModal').style.display='none'" style="background:none;border:none;color:var(--gray);font-size:1.5rem;cursor:pointer;line-height:1;">×</button>
+      </div>
+      <iframe src="https://tally.so/embed/oblx51?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1"
+        width="100%" height="600" frameborder="0" style="flex:1;background:var(--dark-2);"></iframe>
+    </div>
   </div>
 
   <!-- FOOTER -->
@@ -341,6 +388,12 @@
       e.preventDefault();
 
       const child  = document.getElementById('childName').value.trim();
+
+    // Close modal on backdrop click
+    document.getElementById('tallyModal').addEventListener('click', function(e) {
+      if (e.target === this) this.style.display = 'none';
+    });
   </script>
+  <script src="https://tally.so/widgets/embed.js"></script>
 </body>
 </html>
