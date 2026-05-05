@@ -320,6 +320,12 @@ img { max-width: 100%; display: block; }
   color: var(--pink);
   line-height: 1;
 }
+.stat-number::after {
+  content: '+';
+  font-size: 2rem;
+  vertical-align: super;
+  margin-left: 2px;
+}
 .stat-label {
   font-size: 0.8rem;
   color: var(--gray);
