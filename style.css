@@ -326,6 +326,7 @@ img { max-width: 100%; display: block; }
   vertical-align: super;
   margin-left: 2px;
 }
+.stat-number.no-plus::after { content: ''; }
 .stat-label {
   font-size: 0.8rem;
   color: var(--gray);
