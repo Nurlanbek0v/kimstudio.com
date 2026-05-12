@@ -173,14 +173,9 @@ document.querySelectorAll('.video-placeholder').forEach(el => {
   }
 
   function kgTime() {
-    const parts = new Intl.DateTimeFormat('en', {
-      timeZone: 'Asia/Bishkek',
-      hour: 'numeric', minute: 'numeric', weekday: 'short',
-      hour12: false
-    }).formatToParts(new Date());
-    const get = type => parts.find(p => p.type === type).value;
-    const days = { Sun: 0, Mon: 1, Tue: 2, Wed: 3, Thu: 4, Fri: 5, Sat: 6 };
-    return { day: days[get('weekday')], minutes: Number(get('hour')) * 60 + Number(get('minute')) };
+    // Kyrgyzstan is UTC+6, no DST
+    const kg = new Date(Date.now() + 6 * 60 * 60 * 1000);
+    return { day: kg.getUTCDay(), minutes: kg.getUTCHours() * 60 + kg.getUTCMinutes() };
   }
 
   function isNow(row, curMinutes) {
