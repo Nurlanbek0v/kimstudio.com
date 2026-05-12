@@ -128,6 +128,104 @@ document.querySelectorAll('.video-placeholder').forEach(el => {
   });
 });
 
+// Today's schedule widget
+(function () {
+  const DAY_NAMES = ['Воскресенье', 'Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота'];
+
+  const GROUPS = [
+    {
+      days: [1, 3, 5],
+      blockIndex: 0,
+      rows: [
+        { time: '13:30', end: '14:30', name: 'Хип-хоп',      age: '9–13 лет', teacher: 'Диара / Арууке' },
+        { time: '16:30', end: '17:30', name: 'Бейби 1',       age: '4–6 лет',  teacher: 'Алиша' },
+        { time: '17:30', end: '18:30', name: 'Бейби 2',       age: '7–9 лет',  teacher: 'Бема' },
+        { time: '18:30', end: '19:30', name: 'Бейби 3',       age: '7–9 лет',  teacher: 'Бема' },
+        { time: '19:40', end: '20:40', name: 'Lady Dance',    age: '25+',      teacher: 'Алиша', onlyDays: [1, 3] },
+      ]
+    },
+    {
+      days: [2, 4],
+      blockIndex: 1,
+      rows: [
+        { time: '16:40', end: '17:40', name: 'Choreo',  age: '9–13 лет',  teacher: 'Сагын' },
+        { time: '16:40', end: '17:40', name: 'Choreo',  age: '14+ лет',   teacher: 'Аризат' },
+        { time: '17:40', end: '19:00', name: 'Афро',    age: '12+ лет',   teacher: 'Аризат / Саша' },
+        { time: '18:30', end: '19:30', name: 'Choreo',  age: '9–13 лет',  teacher: 'Сагын' },
+      ]
+    },
+    {
+      days: [6, 0],
+      blockIndex: 2,
+      rows: [
+        { time: '13:00', end: '14:10', name: 'Хип-хоп',       age: '9–11 лет',  teacher: 'Риана' },
+        { time: '14:20', end: '15:30', name: 'Хип-хоп',       age: '12+ лет',   teacher: 'Риана' },
+        { time: '15:30', end: '16:40', name: 'Girly Choreo',   age: '14+ лет',   teacher: 'Айтунук' },
+        { time: '16:40', end: '17:40', name: 'KPOP + Choreo',  age: '12+ лет',   teacher: 'Ясмин' },
+        { time: '17:40', end: '18:40', name: 'Choreo',         age: '9–13 лет',  teacher: 'Алиша' },
+      ]
+    }
+  ];
+
+  function toMinutes(hhmm) {
+    const [h, m] = hhmm.split(':').map(Number);
+    return h * 60 + m;
+  }
+
+  function kgTime() {
+    const parts = new Intl.DateTimeFormat('en', {
+      timeZone: 'Asia/Bishkek',
+      hour: 'numeric', minute: 'numeric', weekday: 'short',
+      hour12: false
+    }).formatToParts(new Date());
+    const get = type => parts.find(p => p.type === type).value;
+    const days = { Sun: 0, Mon: 1, Tue: 2, Wed: 3, Thu: 4, Fri: 5, Sat: 6 };
+    return { day: days[get('weekday')], minutes: Number(get('hour')) * 60 + Number(get('minute')) };
+  }
+
+  function isNow(row, curMinutes) {
+    return curMinutes >= toMinutes(row.time) && curMinutes < toMinutes(row.end);
+  }
+
+  const { day: today, minutes: nowMinutes } = kgTime();
+  const group = GROUPS.find(g => g.days.includes(today));
+  const widget = document.getElementById('todayWidget');
+  if (!widget || !group) return;
+
+  const rows = group.rows.filter(r => !r.onlyDays || r.onlyDays.includes(today));
+
+  const rowsHTML = rows.map(row => {
+    const now = isNow(row, nowMinutes);
+    return `
+      <div class="today-row${now ? ' today-row--now' : ''}">
+        <span class="sched-time">${row.time} – ${row.end}</span>
+        <span class="sched-info">
+          <span class="sched-name">${row.name}</span>
+          <span class="sched-age">${row.age}</span>
+        </span>
+        <span class="sched-teacher">${now ? '<span class="now-badge">Сейчас</span>' : row.teacher}</span>
+      </div>`;
+  }).join('');
+
+  widget.innerHTML = `
+    <div class="today-header">
+      <span class="today-label">Занятия сегодня</span>
+      <span class="today-day-name">${DAY_NAMES[today]}</span>
+    </div>
+    <div class="today-rows">${rowsHTML}</div>`;
+
+  // Highlight the matching schedule-block
+  const blocks = document.querySelectorAll('.schedule-block');
+  const activeBlock = blocks[group.blockIndex];
+  if (activeBlock) {
+    activeBlock.classList.add('schedule-block--today');
+    const badge = document.createElement('span');
+    badge.className = 'today-block-badge';
+    badge.textContent = 'Сегодня';
+    activeBlock.querySelector('.schedule-block-header').appendChild(badge);
+  }
+})();
+
 // Smooth active link highlight based on scroll
 const sections = document.querySelectorAll('section[id]');
 const navAnchors = document.querySelectorAll('.nav-links a');

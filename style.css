@@ -717,6 +717,103 @@ img { max-width: 100%; display: block; }
   color: rgba(255,255,255,0.75);
   font-size: 0.95rem;
 }
+
+/* ===== TODAY WIDGET ===== */
+.today-widget {
+  background: var(--dark-2);
+  border: 1px solid rgba(232,83,122,0.3);
+  border-radius: var(--radius);
+  overflow: hidden;
+  margin-bottom: 32px;
+}
+
+.today-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 24px;
+  background: var(--dark-3);
+  border-bottom: 1px solid rgba(232,83,122,0.15);
+}
+
+.today-label {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--pink-light);
+}
+
+.today-day-name {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--white);
+}
+
+.today-rows { padding: 8px 0; }
+
+.today-row {
+  display: grid;
+  grid-template-columns: 130px 1fr auto;
+  gap: 12px;
+  align-items: center;
+  padding: 13px 24px;
+  border-bottom: 1px solid rgba(255,255,255,0.04);
+  transition: var(--transition);
+}
+.today-row:last-child { border-bottom: none; }
+.today-row:hover { background: rgba(232,83,122,0.04); }
+
+.today-row--now {
+  background: rgba(232,83,122,0.08);
+  border-left: 3px solid var(--pink);
+  padding-left: 21px;
+}
+
+.now-badge {
+  display: inline-block;
+  padding: 2px 8px;
+  background: var(--pink);
+  color: #fff;
+  border-radius: 50px;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  animation: pulse-badge 2s infinite;
+}
+
+@keyframes pulse-badge {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.6; }
+}
+
+/* Highlight active schedule-block */
+.schedule-block--today {
+  border-color: rgba(232,83,122,0.35);
+  box-shadow: 0 0 0 1px rgba(232,83,122,0.2);
+}
+
+.today-block-badge {
+  display: inline-block;
+  margin-left: 10px;
+  padding: 3px 10px;
+  background: rgba(232,83,122,0.15);
+  border: 1px solid rgba(232,83,122,0.3);
+  border-radius: 50px;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--pink-light);
+  vertical-align: middle;
+}
+
+@media (max-width: 600px) {
+  .today-row { grid-template-columns: 110px 1fr; }
+  .today-row .sched-teacher { display: none; }
+}
 .schedule-note strong { color: var(--pink-light); }
 
 /* ===== KIMS SHOW ===== */
