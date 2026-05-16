@@ -818,8 +818,17 @@ img { max-width: 100%; display: block; }
 }
 
 @media (max-width: 600px) {
-  .today-row { grid-template-columns: 110px 1fr; }
-  .today-row .sched-teacher { display: none; }
+  .today-row {
+    grid-template-columns: 110px 1fr;
+    grid-template-rows: auto auto;
+  }
+  .today-row .sched-time { grid-row: span 2; }
+  .today-row .sched-teacher {
+    grid-column: 2;
+    font-size: 0.75rem;
+    color: var(--gray);
+    margin-top: -6px;
+  }
 }
 .schedule-note strong { color: var(--pink-light); }
 
@@ -1157,8 +1166,17 @@ img { max-width: 100%; display: block; }
   .footer-container { grid-template-columns: 1fr; gap: 32px; }
   .footer-brand { grid-column: span 1; }
 
-  .schedule-row { grid-template-columns: 120px 1fr; }
-  .sched-teacher { display: none; }
+  .schedule-row {
+    grid-template-columns: 120px 1fr;
+    grid-template-rows: auto auto;
+  }
+  .schedule-row .sched-time { grid-row: span 2; }
+  .sched-teacher {
+    grid-column: 2;
+    font-size: 0.75rem;
+    color: var(--gray);
+    margin-top: -4px;
+  }
 }
 
 @media (max-width: 480px) {
