@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-KLJQ2LQRY6"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-KLJQ2LQRY6');
+  </script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Расписание занятий KimStudio — полное расписание всех групп. HIP-HOP, KPOP, AFRO, BABY, CHOREO, LADY DANCE в Кара-Балте." />
+  <meta property="og:title" content="Расписание — KimStudio" />
+  <meta property="og:description" content="Полное расписание всех танцевальных групп KimStudio в Кара-Балте." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="logo.png" />
+  <link rel="icon" type="image/png" href="logo.png" />
+  <title>Расписание — KimStudio</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    /* ===== SCHEDULE PAGE STYLES ===== */
+    .sched-hero {
+      padding: 130px 0 60px;
+      text-align: center;
+      background: var(--dark);
+      position: relative;
+      overflow: hidden;
+    }
+    .sched-hero::before {
+      content: '';
+      position: absolute;
+      top: -80px; left: 50%;
+      transform: translateX(-50%);
+      width: 600px; height: 600px;
+      background: radial-gradient(circle, rgba(232,83,122,0.12) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    /* Filter tabs */
+    .filter-tabs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: center;
+      margin: 36px 0 48px;
+    }
+    .filter-tab {
+      padding: 8px 20px;
+      border-radius: 50px;
+      border: 1.5px solid rgba(232,83,122,0.3);
+      background: transparent;
+      color: var(--gray);
+      font-size: 0.82rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.25s ease;
+      font-family: 'Inter', sans-serif;
+      letter-spacing: 0.5px;
+    }
+    .filter-tab:hover {
+      border-color: var(--pink);
+      color: var(--white);
+    }
+    .filter-tab.active {
+      background: var(--pink);
+      border-color: var(--pink);
+      color: var(--white);
+    }
+
+    /* Schedule page blocks */
+    .sched-page-blocks {
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+    }
+    .sched-page-block {
+      background: var(--dark-2);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: var(--radius);
+      overflow: hidden;
+      transition: border-color 0.3s;
+    }
+    .sched-page-block:hover {
+      border-color: rgba(232,83,122,0.25);
+    }
+    .sched-page-block-header {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 20px 28px;
+      background: rgba(255,255,255,0.03);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .sched-page-block-header .days-badge {
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+    }
+    .block-subtitle {
+      font-size: 0.8rem;
+      color: var(--gray);
+    }
+    .block-count {
+      margin-left: auto;
+      font-size: 0.75rem;
+      color: var(--gray);
+      background: rgba(255,255,255,0.05);
+      padding: 4px 12px;
+      border-radius: 20px;
+    }
+
+    /* Schedule rows in page */
+    .sched-page-rows {
+      padding: 8px 0;
+    }
+    .sched-page-row {
+      display: grid;
+      grid-template-columns: 140px 1fr auto;
+      align-items: center;
+      gap: 16px;
+      padding: 16px 28px;
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+      transition: background 0.2s;
+    }
+    .sched-page-row:last-child { border-bottom: none; }
+    .sched-page-row:hover { background: rgba(255,255,255,0.02); }
+    .sched-page-row.row--now {
+      background: rgba(232,83,122,0.08);
+      border-left: 3px solid var(--pink);
+      padding-left: 25px;
+    }
+    .sched-page-row.row--hidden { display: none; }
+
+    .sched-page-row .sched-time {
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: var(--pink-light);
+      white-space: nowrap;
+    }
+    .sched-page-row .sched-info {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+    }
+    .sched-page-row .sched-name {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--white);
+    }
+    .sched-page-row .sched-age {
+      font-size: 0.78rem;
+      color: var(--gray);
+    }
+    .sched-page-row .sched-teacher {
+      font-size: 0.8rem;
+      color: var(--gray);
+      text-align: right;
+      white-space: nowrap;
+    }
+
+    .now-badge {
+      display: inline-block;
+      background: var(--pink);
+      color: #fff;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      padding: 2px 8px;
+      border-radius: 4px;
+      animation: pulse 1.8s infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.6; }
+    }
+
+    /* Stats bar */
+    .sched-stats {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      margin-bottom: 48px;
+    }
+    .sched-stat-card {
+      background: var(--dark-2);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: var(--radius);
+      padding: 20px;
+      text-align: center;
+    }
+    .sched-stat-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--pink);
+      display: block;
+    }
+    .sched-stat-label {
+      font-size: 0.78rem;
+      color: var(--gray);
+      margin-top: 4px;
+    }
+
+    /* CTA section */
+    .sched-cta {
+      text-align: center;
+      padding: 60px 24px;
+      background: linear-gradient(135deg, rgba(232,83,122,0.08) 0%, transparent 100%);
+      border-radius: var(--radius);
+      border: 1px solid rgba(232,83,122,0.15);
+      margin-top: 48px;
+    }
+    .sched-cta h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.8rem;
+      color: var(--white);
+      margin-bottom: 12px;
+    }
+    .sched-cta p {
+      color: var(--gray);
+      margin-bottom: 28px;
+    }
+
+    /* Note */
+    .sched-note {
+      margin-top: 20px;
+      font-size: 0.82rem;
+      color: var(--gray);
+      text-align: center;
+    }
+    .sched-note span {
+      color: var(--pink-light);
+    }
+
+    /* Today widget on this page */
+    #todayWidget {
+      max-width: 700px;
+      margin: 0 auto 48px;
+    }
+
+    @media (max-width: 600px) {
+      .sched-stats { grid-template-columns: repeat(2, 1fr); }
+      .sched-page-row {
+        grid-template-columns: 110px 1fr;
+        grid-template-rows: auto auto;
+      }
+      .sched-page-row .sched-teacher {
+        grid-column: 2;
+        text-align: left;
+      }
+      .sched-page-block-header { flex-wrap: wrap; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVIGATION -->
+  <nav class="navbar scrolled" id="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="nav-brand">
+        <img src="logo.png" alt="KimStudio" class="nav-logo-img" />
+      </a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html#about">О нас</a></li>
+        <li><a href="teachers.html">Педагоги</a></li>
+        <li><a href="index.html#directions">Направления</a></li>
+        <li><a href="schedule.html" style="color: var(--pink);">Расписание</a></li>
+        <li><a href="index.html#show">KimS Show</a></li>
+        <li><a href="index.html#rules">Правила</a></li>
+        <li><a href="index.html#faq">FAQ</a></li>
+        <li><a href="index.html#contact">Контакты</a></li>
+        <li><a href="news.html">Новости</a></li>
+        <li><a href="payment.html" style="color:var(--pink);">Оплата</a></li>
+      </ul>
+      <button class="burger" id="burger" aria-label="Меню">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="sched-hero">
+    <div class="container">
+      <span class="section-tag">2025–2026 учебный год</span>
+      <h1 class="section-title" style="margin-bottom: 12px;">Расписание занятий</h1>
+      <p class="section-desc" style="margin: 0 auto;">Полное расписание всех групп KimStudio</p>
+    </div>
+  </section>
+
+  <!-- MAIN CONTENT -->
+  <section class="section" style="padding-top: 0;">
+    <div class="container">
+
+      <!-- Today Widget -->
+      <div id="todayWidget"></div>
+
+      <!-- Stats bar -->
+      <div class="sched-stats">
+        <div class="sched-stat-card">
+          <span class="sched-stat-num">14</span>
+          <span class="sched-stat-label">занятий в неделю</span>
+        </div>
+        <div class="sched-stat-card">
+          <span class="sched-stat-num">6</span>
+          <span class="sched-stat-label">направлений</span>
+        </div>
+        <div class="sched-stat-card">
+          <span class="sched-stat-num">4–25+</span>
+          <span class="sched-stat-label">возраст учеников</span>
+        </div>
+        <div class="sched-stat-card">
+          <span class="sched-stat-num">1 600</span>
+          <span class="sched-stat-label">сом / месяц</span>
+        </div>
+      </div>
+
+      <!-- Filter tabs -->
+      <div class="filter-tabs" id="filterTabs">
+        <button class="filter-tab active" data-filter="all">Все группы</button>
+        <button class="filter-tab" data-filter="hiphop">Хип-хоп</button>
+        <button class="filter-tab" data-filter="choreo">Choreo</button>
+        <button class="filter-tab" data-filter="baby">Baby</button>
+        <button class="filter-tab" data-filter="kpop">K-POP</button>
+        <button class="filter-tab" data-filter="afro">Афро</button>
+        <button class="filter-tab" data-filter="lady">Lady Dance</button>
+        <button class="filter-tab" data-filter="girly">Girly Choreo</button>
+      </div>
+
+      <!-- Schedule blocks -->
+      <div class="sched-page-blocks">
+
+        <!-- Mon / Wed / Fri -->
+        <div class="sched-page-block">
+          <div class="sched-page-block-header">
+            <span class="days-badge">ПН / СР / ПТ</span>
+            <span class="block-subtitle">Понедельник, Среда, Пятница</span>
+            <span class="block-count">5 групп</span>
+          </div>
+          <div class="sched-page-rows" id="block-mwf">
+            <div class="sched-page-row" data-dir="hiphop">
+              <span class="sched-time">13:30 – 14:30</span>
+              <span class="sched-info">
+                <span class="sched-name">Хип-хоп</span>
+                <span class="sched-age">9–13 лет</span>
+              </span>
+              <span class="sched-teacher">Диара / Арууке</span>
+            </div>
+            <div class="sched-page-row" data-dir="baby">
+              <span class="sched-time">16:30 – 17:30</span>
+              <span class="sched-info">
+                <span class="sched-name">Baby 1</span>
+                <span class="sched-age">4–6 лет</span>
+              </span>
+              <span class="sched-teacher">Алиша</span>
+            </div>
+            <div class="sched-page-row" data-dir="baby">
+              <span class="sched-time">17:30 – 18:30</span>
+              <span class="sched-info">
+                <span class="sched-name">Baby 2</span>
+                <span class="sched-age">7–9 лет</span>
+              </span>
+              <span class="sched-teacher">Бема</span>
+            </div>
+            <div class="sched-page-row" data-dir="baby">
+              <span class="sched-time">18:30 – 19:30</span>
+              <span class="sched-info">
+                <span class="sched-name">Baby 3</span>
+                <span class="sched-age">7–9 лет</span>
+              </span>
+              <span class="sched-teacher">Бема</span>
+            </div>
+            <div class="sched-page-row" data-dir="lady">
+              <span class="sched-time">19:40 – 20:40</span>
+              <span class="sched-info">
+                <span class="sched-name">Lady Dance</span>
+                <span class="sched-age">25+ · только Пн / Ср</span>
+              </span>
+              <span class="sched-teacher">Алиша</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tue / Thu -->
+        <div class="sched-page-block">
+          <div class="sched-page-block-header">
+            <span class="days-badge days-badge--purple">ВТ / ЧТ</span>
+            <span class="block-subtitle">Вторник, Четверг</span>
+            <span class="block-count">4 группы</span>
+          </div>
+          <div class="sched-page-rows" id="block-tt">
+            <div class="sched-page-row" data-dir="choreo">
+              <span class="sched-time">16:40 – 17:40</span>
+              <span class="sched-info">
+                <span class="sched-name">Choreo</span>
+                <span class="sched-age">9–13 лет</span>
+              </span>
+              <span class="sched-teacher">Сагын</span>
+            </div>
+            <div class="sched-page-row" data-dir="choreo">
+              <span class="sched-time">16:40 – 17:40</span>
+              <span class="sched-info">
+                <span class="sched-name">Choreo</span>
+                <span class="sched-age">14+ лет</span>
+              </span>
+              <span class="sched-teacher">Аризат</span>
+            </div>
+            <div class="sched-page-row" data-dir="afro">
+              <span class="sched-time">17:40 – 19:00</span>
+              <span class="sched-info">
+                <span class="sched-name">Афро</span>
+                <span class="sched-age">12+ лет</span>
+              </span>
+              <span class="sched-teacher">Аризат / Саша</span>
+            </div>
+            <div class="sched-page-row" data-dir="choreo">
+              <span class="sched-time">18:30 – 19:30</span>
+              <span class="sched-info">
+                <span class="sched-name">Choreo</span>
+                <span class="sched-age">9–13 лет</span>
+              </span>
+              <span class="sched-teacher">Сагын</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Sat / Sun -->
+        <div class="sched-page-block">
+          <div class="sched-page-block-header">
+            <span class="days-badge days-badge--green">СБ / ВСК</span>
+            <span class="block-subtitle">Суббота, Воскресенье</span>
+            <span class="block-count">5 групп</span>
+          </div>
+          <div class="sched-page-rows" id="block-ss">
+            <div class="sched-page-row" data-dir="hiphop">
+              <span class="sched-time">13:00 – 14:10</span>
+              <span class="sched-info">
+                <span class="sched-name">Хип-хоп</span>
+                <span class="sched-age">9–11 лет</span>
+              </span>
+              <span class="sched-teacher">Риана</span>
+            </div>
+            <div class="sched-page-row" data-dir="hiphop">
+              <span class="sched-time">14:20 – 15:30</span>
+              <span class="sched-info">
+                <span class="sched-name">Хип-хоп</span>
+                <span class="sched-age">12+ лет</span>
+              </span>
+              <span class="sched-teacher">Риана</span>
+            </div>
+            <div class="sched-page-row" data-dir="girly">
+              <span class="sched-time">15:30 – 16:40</span>
+              <span class="sched-info">
+                <span class="sched-name">Girly Choreo</span>
+                <span class="sched-age">14+ лет</span>
+              </span>
+              <span class="sched-teacher">Айтунук</span>
+            </div>
+            <div class="sched-page-row" data-dir="kpop">
+              <span class="sched-time">16:40 – 17:40</span>
+              <span class="sched-info">
+                <span class="sched-name">KPOP + Choreo</span>
+                <span class="sched-age">12+ лет</span>
+              </span>
+              <span class="sched-teacher">Ясмин</span>
+            </div>
+            <div class="sched-page-row" data-dir="choreo">
+              <span class="sched-time">17:40 – 18:40</span>
+              <span class="sched-info">
+                <span class="sched-name">Choreo</span>
+                <span class="sched-age">9–13 лет</span>
+              </span>
+              <span class="sched-teacher">Алиша</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <p class="sched-note">Режим работы: <span>Пн–Пт 16:30–20:30</span> · <span>Сб–Вск 13:00–18:30</span> · Адрес: г. Кара-Балта, ул. Свердлова 59А</p>
+
+      <!-- CTA -->
+      <div class="sched-cta">
+        <h2>Готовы начать?</h2>
+        <p>Запишитесь на занятие прямо сейчас — ответим в течение дня</p>
+        <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
+          <a href="https://wa.me/996707430777" target="_blank" rel="noopener noreferrer"
+             class="btn btn-primary"
+             onclick="gtag('event','whatsapp_click',{event_category:'contact',event_label:'Schedule Page CTA'});">
+            Записаться в WhatsApp
+          </a>
+          <a href="index.html#contact" class="btn btn-outline">Заполнить форму</a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-brand">
+        <span class="logo">KIM<span>STUDIO</span></span>
+        <p>Студия современных танцев.<br>ул. Свердлова 59А<br>г. Кара-Балта, Чуйская область, Кыргызстан</p>
+      </div>
+      <div class="footer-links">
+        <a href="index.html#about">О студии</a>
+        <a href="teachers.html">Педагоги</a>
+        <a href="index.html#directions">Направления</a>
+        <a href="schedule.html">Расписание</a>
+        <a href="index.html#show">KimS Show</a>
+        <a href="index.html#rules">Правила</a>
+        <a href="index.html#contact">Контакты</a>
+        <a href="news.html">Новости</a>
+      </div>
+      <div class="footer-social">
+        <div class="footer-social-icons">
+          <a href="https://wa.me/996707430777" target="_blank" rel="noopener noreferrer" class="footer-fab fab-whatsapp" aria-label="WhatsApp">
+            <svg viewBox="0 0 24 24" fill="currentColor" width="22" height="22"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          </a>
+          <a href="https://www.instagram.com/kimstudioo/" target="_blank" rel="noopener noreferrer" class="footer-fab fab-instagram" aria-label="Instagram">
+            <svg viewBox="0 0 24 24" fill="currentColor" width="22" height="22"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+          </a>
+          <a href="https://www.tiktok.com/@kimstudioo?_r=1&_t=ZT-95xl43tIwwQ" target="_blank" rel="noopener noreferrer" class="footer-fab fab-tiktok" aria-label="TikTok">
+            <svg viewBox="0 0 24 24" fill="currentColor" width="22" height="22"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.18 8.18 0 004.78 1.52V6.76a4.85 4.85 0 01-1.01-.07z"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 KimStudio. Все права защищены.</p>
+    </div>
+  </footer>
+
+  <!-- Social floating buttons -->
+  <div class="social-float-group">
+    <a href="https://wa.me/996707430777" target="_blank" rel="noopener noreferrer" class="social-fab fab-whatsapp" aria-label="WhatsApp" onclick="gtag('event','whatsapp_click',{event_category:'contact',event_label:'FAB Button'});">
+      <svg viewBox="0 0 24 24" fill="currentColor" width="26" height="26"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    </a>
+    <a href="https://www.instagram.com/kimstudioo/" target="_blank" rel="noopener noreferrer" class="social-fab fab-instagram" aria-label="Instagram" onclick="gtag('event','instagram_click',{event_category:'social',event_label:'FAB Button'});">
+      <svg viewBox="0 0 24 24" fill="currentColor" width="26" height="26"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+    </a>
+    <a href="https://www.tiktok.com/@kimstudioo?_r=1&_t=ZT-95xl43tIwwQ" target="_blank" rel="noopener noreferrer" class="social-fab fab-tiktok" aria-label="TikTok" onclick="gtag('event','tiktok_click',{event_category:'social',event_label:'FAB Button'});">
+      <svg viewBox="0 0 24 24" fill="currentColor" width="26" height="26"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.18 8.18 0 004.78 1.52V6.76a4.85 4.85 0 01-1.01-.07z"/></svg>
+    </a>
+  </div>
+
+  <script src="script.js"></script>
+  <script>
+    // Filter tabs
+    const tabs = document.querySelectorAll('.filter-tab');
+    const rows = document.querySelectorAll('.sched-page-row');
+
+    tabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        tabs.forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
+        const filter = tab.dataset.filter;
+        rows.forEach(row => {
+          if (filter === 'all' || row.dataset.dir === filter) {
+            row.classList.remove('row--hidden');
+          } else {
+            row.classList.add('row--hidden');
+          }
+        });
+      });
+    });
+
+    // "Now" highlight
+    (function () {
+      function kgTime() {
+        const kg = new Date(Date.now() + 6 * 60 * 60 * 1000);
+        return { day: kg.getUTCDay(), minutes: kg.getUTCHours() * 60 + kg.getUTCMinutes() };
+      }
+      function toMin(hhmm) {
+        const [h, m] = hhmm.split(':').map(Number);
+        return h * 60 + m;
+      }
+
+      const SCHEDULE = [
+        // MWF block
+        { days: [1,3,5], blockId: 'block-mwf', rows: [
+          { start:'13:30', end:'14:30', idx:0 },
+          { start:'16:30', end:'17:30', idx:1 },
+          { start:'17:30', end:'18:30', idx:2 },
+          { start:'18:30', end:'19:30', idx:3 },
+          { start:'19:40', end:'20:40', idx:4, onlyDays:[1,3] },
+        ]},
+        // TT block
+        { days: [2,4], blockId: 'block-tt', rows: [
+          { start:'16:40', end:'17:40', idx:0 },
+          { start:'16:40', end:'17:40', idx:1 },
+          { start:'17:40', end:'19:00', idx:2 },
+          { start:'18:30', end:'19:30', idx:3 },
+        ]},
+        // SS block
+        { days: [6,0], blockId: 'block-ss', rows: [
+          { start:'13:00', end:'14:10', idx:0 },
+          { start:'14:20', end:'15:30', idx:1 },
+          { start:'15:30', end:'16:40', idx:2 },
+          { start:'16:40', end:'17:40', idx:3 },
+          { start:'17:40', end:'18:40', idx:4 },
+        ]},
+      ];
+
+      const { day, minutes } = kgTime();
+      const block = SCHEDULE.find(b => b.days.includes(day));
+      if (!block) return;
+      const container = document.getElementById(block.blockId);
+      if (!container) return;
+      const rowEls = container.querySelectorAll('.sched-page-row');
+
+      block.rows.forEach(r => {
+        if (r.onlyDays && !r.onlyDays.includes(day)) return;
+        if (minutes >= toMin(r.start) && minutes < toMin(r.end)) {
+          const el = rowEls[r.idx];
+          if (el) {
+            el.classList.add('row--now');
+            const teacherEl = el.querySelector('.sched-teacher');
+            if (teacherEl) {
+              teacherEl.innerHTML = '<span class="now-badge">Сейчас</span>';
+            }
+          }
+        }
+      });
+    })();
+  </script>
+</body>
+</html>
