@@ -403,7 +403,8 @@
           </div>
         </div>
         <form class="contact-form" id="contactForm">
-          <h3>Записаться на занятие</h3>
+          <h3>Заказать выступление</h3>
+          <p style="font-size:0.85rem; color:var(--gray); margin-bottom:20px;">Свадьбы, юбилеи, корпоративы, флешмобы — украсим любое мероприятие</p>
           <div class="form-group">
             <input type="text" name="name" placeholder="Ваше имя" required />
           </div>
@@ -411,32 +412,25 @@
             <input type="tel" name="phone" placeholder="Номер телефона" required />
           </div>
           <div class="form-group">
-            <input type="email" name="email" placeholder="Email (необязательно — для подтверждения)" />
-          </div>
-          <div class="form-group">
             <select name="direction">
-              <option value="" disabled selected>Выберите направление</option>
-              <option>Хип-хоп (9–13 лет) — Пн/Ср/Пт</option>
-              <option>Бейби 1 (4–6 лет)</option>
-              <option>Бейби 2 (7–9 лет)</option>
-              <option>Бейби 3 (7–9 лет)</option>
-              <option>Lady Dance (25+)</option>
-              <option>Choreo (9–13 лет) — Вт/Чт</option>
-              <option>Choreo (14+ лет) — Вт/Чт</option>
-              <option>Афро (12+)</option>
-              <option>Хип-хоп (9–11 лет) — Сб/Вск</option>
-              <option>Хип-хоп (12+) — Сб/Вск</option>
-              <option>Girly Choreo (14+)</option>
-              <option>KPOP + Choreo (12+)</option>
-              <option>Choreo (9–13 лет) — Сб/Вск</option>
-              <option>KIMS SHOW (заказ выступления)</option>
+              <option value="" disabled selected>Тип мероприятия</option>
+              <option>Свадьба</option>
+              <option>День рождения / юбилей</option>
+              <option>Корпоратив</option>
+              <option>Постановка вальса для молодожёнов</option>
+              <option>Постановка флешмоба</option>
+              <option>Другое</option>
             </select>
           </div>
           <div class="form-group">
-            <textarea name="message" placeholder="Дополнительная информация (возраст, вопросы...)" rows="4"></textarea>
+            <textarea name="message" placeholder="Дата, место, пожелания..." rows="4"></textarea>
           </div>
-          <button type="submit" class="btn btn-primary btn-full" onclick="gtag('event','form_submit',{event_category:'lead',event_label:'Signup Form'});">Отправить заявку</button>
+          <button type="submit" class="btn btn-primary btn-full" onclick="gtag('event','show_order',{event_category:'lead',event_label:'Show Order Form'});">Отправить заявку</button>
           <p class="form-note" id="formNote">Мы свяжемся с вами в течение дня</p>
+          <div style="border-top: 1px solid rgba(255,255,255,0.06); margin-top: 24px; padding-top: 20px; text-align:center;">
+            <p style="font-size:0.82rem; color:var(--gray); margin-bottom:12px;">Хотите записаться на занятие?</p>
+            <a href="enroll.html" class="btn btn-outline" style="display:inline-block;" onclick="gtag('event','enroll_click',{event_category:'navigation',event_label:'Contact Section'});">Выбрать группу и записаться</a>
+          </div>
         </form>
       </div>
     </div>
