@@ -8,9 +8,11 @@ window.addEventListener('scroll', () => {
 const burger = document.getElementById('burger');
 const navLinks = document.getElementById('navLinks');
 
+burger.setAttribute('aria-expanded', 'false');
 burger.addEventListener('click', () => {
-  navLinks.classList.toggle('open');
+  const isOpen = navLinks.classList.toggle('open');
   burger.classList.toggle('active');
+  burger.setAttribute('aria-expanded', String(isOpen));
 });
 
 navLinks.querySelectorAll('a').forEach(link => {
@@ -82,7 +84,7 @@ document.querySelectorAll(
 const form     = document.getElementById('contactForm');
 const formNote = document.getElementById('formNote');
 
-form.addEventListener('submit', (e) => {
+if (form) form.addEventListener('submit', (e) => {
   e.preventDefault();
   const btn  = form.querySelector('button[type="submit"]');
   const data = new FormData(form);
