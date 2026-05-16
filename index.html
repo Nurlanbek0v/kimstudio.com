@@ -43,7 +43,8 @@
         <li><a href="#faq">FAQ</a></li>
         <li><a href="#contact">Контакты</a></li>
         <li><a href="news.html">Новости</a></li>
-        <li><a href="payment.html" style="color:var(--pink);">Оплата</a></li>
+        <li><a href="enroll.html" style="color:var(--pink);" onclick="gtag('event','enroll_click',{event_category:'navigation',event_label:'Navbar'});">Записаться</a></li>
+        <li><a href="payment.html">Оплата</a></li>
       </ul>
       <button class="burger" id="burger" aria-label="Меню">
         <span></span><span></span><span></span>
@@ -62,7 +63,7 @@
       <p class="hero-desc">HIP-HOP · KPOP · AFRO DANCE · GIRLY CHOREO · LADY DANCE</p>
       <div class="hero-buttons">
         <a href="schedule.html" class="btn btn-primary" onclick="gtag('event','schedule_click',{event_category:'navigation',event_label:'Hero Button'});">Расписание</a>
-        <a href="#contact" class="btn btn-outline">Записаться</a>
+        <a href="enroll.html" class="btn btn-outline" onclick="gtag('event','enroll_click',{event_category:'navigation',event_label:'Hero Button'});">Записаться</a>
       </div>
     </div>
     <div class="hero-scroll">
