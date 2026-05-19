@@ -281,8 +281,12 @@ img { max-width: 100%; display: block; }
   width: 26px; height: 2px;
   background: var(--white);
   border-radius: 2px;
-  transition: var(--transition);
+  transition: transform 0.35s ease, opacity 0.25s ease, background 0.3s ease;
+  transform-origin: center;
 }
+.burger.active span:nth-child(1) { transform: translateY(7px) rotate(45deg); background: var(--pink); }
+.burger.active span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+.burger.active span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); background: var(--pink); }
 
 /* ===== HERO ===== */
 @keyframes mesh-move-1 {
