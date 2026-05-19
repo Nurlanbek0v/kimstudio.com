@@ -777,6 +777,15 @@ img { max-width: 100%; display: block; }
 .direction-card:hover::before { opacity: 1; }
 .direction-card:hover::after  { left: 150%; }
 
+@keyframes icon-wobble {
+  0%, 100% { transform: rotate(0deg); }
+  20%       { transform: rotate(-14deg); }
+  40%       { transform: rotate(11deg); }
+  60%       { transform: rotate(-7deg); }
+  80%       { transform: rotate(4deg); }
+}
+.direction-card:hover .card-icon { animation: icon-wobble 0.55s ease; }
+
 .card-icon {
   font-size: 2rem;
   margin-bottom: 14px;
