@@ -1,28 +1,14 @@
 // Loader
 (function () {
-  const loader   = document.getElementById('loader');
-  const progress = loader && loader.querySelector('.loader-progress');
-  if (!loader || !progress) return;
+  const loader = document.getElementById('loader');
+  if (!loader) return;
 
-  let start = null;
-  const FILL_MS  = 1400;
-  const HOLD_MS  = 200;
-
-  function tick(ts) {
-    if (!start) start = ts;
-    const pct = Math.min((ts - start) / FILL_MS, 1);
-    progress.style.width = (pct * 100) + '%';
-    if (pct < 1) {
-      requestAnimationFrame(tick);
-    } else {
-      setTimeout(() => loader.classList.add('hidden'), HOLD_MS);
-    }
-  }
+  const hide = () => loader.classList.add('hidden');
 
   if (document.readyState === 'complete') {
-    requestAnimationFrame(tick);
+    setTimeout(hide, 800);
   } else {
-    window.addEventListener('load', () => requestAnimationFrame(tick));
+    window.addEventListener('load', () => setTimeout(hide, 800));
   }
 })();
 
