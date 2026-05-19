@@ -26,6 +26,26 @@
   }
 })();
 
+// Scrollspy
+(function () {
+  const sections   = document.querySelectorAll('section[id]');
+  const navAnchors = document.querySelectorAll('.nav-links a[href^="#"]');
+  if (!sections.length || !navAnchors.length) return;
+
+  const spy = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const id = entry.target.id;
+        navAnchors.forEach(a => {
+          a.classList.toggle('active', a.getAttribute('href') === `#${id}`);
+        });
+      }
+    });
+  }, { threshold: 0.25, rootMargin: '-10% 0px -55% 0px' });
+
+  sections.forEach(s => spy.observe(s));
+})();
+
 // Navbar scroll effect
 const navbar = document.getElementById('navbar');
 window.addEventListener('scroll', () => {
