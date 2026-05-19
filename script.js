@@ -59,7 +59,7 @@ document.addEventListener('click', (e) => {
 });
 
 // Animated counters with SVG ring
-const RING_R = 50;
+const RING_R = 68;
 const RING_C = parseFloat((2 * Math.PI * RING_R).toFixed(2));
 
 function animateCounter(el, target, ring, duration = 1800) {
