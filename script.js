@@ -1,3 +1,31 @@
+// Loader
+(function () {
+  const loader   = document.getElementById('loader');
+  const progress = loader && loader.querySelector('.loader-progress');
+  if (!loader || !progress) return;
+
+  let start = null;
+  const FILL_MS  = 1400;
+  const HOLD_MS  = 200;
+
+  function tick(ts) {
+    if (!start) start = ts;
+    const pct = Math.min((ts - start) / FILL_MS, 1);
+    progress.style.width = (pct * 100) + '%';
+    if (pct < 1) {
+      requestAnimationFrame(tick);
+    } else {
+      setTimeout(() => loader.classList.add('hidden'), HOLD_MS);
+    }
+  }
+
+  if (document.readyState === 'complete') {
+    requestAnimationFrame(tick);
+  } else {
+    window.addEventListener('load', () => requestAnimationFrame(tick));
+  }
+})();
+
 // Navbar scroll effect
 const navbar = document.getElementById('navbar');
 window.addEventListener('scroll', () => {
@@ -62,7 +90,7 @@ document.querySelectorAll('.stat-number[data-target]').forEach(el => counterObse
 
 // Reveal on scroll
 const revealObserver = new IntersectionObserver((entries) => {
-  entries.forEach((entry, i) => {
+  entries.forEach((entry) => {
     if (entry.isIntersecting) {
       setTimeout(() => {
         entry.target.classList.add('visible');
