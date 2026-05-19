@@ -100,12 +100,26 @@ const revealObserver = new IntersectionObserver((entries) => {
   });
 }, observerOptions);
 
-document.querySelectorAll(
-  '.direction-card, .about-text, .about-image, .trainer-info, .trainer-image, .gallery-item, .contact-item, .contact-form'
-).forEach((el, i) => {
-  el.classList.add('reveal');
-  el.dataset.delay = (i % 3) * 100;
-  revealObserver.observe(el);
+const revealMap = [
+  { sel: '.direction-card',  cls: '' },
+  { sel: '.about-text',      cls: 'from-left' },
+  { sel: '.about-image',     cls: 'from-right' },
+  { sel: '.contact-item',    cls: 'from-left' },
+  { sel: '.contact-form',    cls: 'from-right' },
+  { sel: '.rule-item',       cls: 'scale-in' },
+  { sel: '.teacher-card',    cls: '' },
+  { sel: '.show-text',       cls: 'from-left' },
+  { sel: '.show-visual',     cls: 'from-right' },
+  { sel: '.stat-item',       cls: 'scale-in' },
+];
+
+revealMap.forEach(({ sel, cls }) => {
+  document.querySelectorAll(sel).forEach((el, i) => {
+    el.classList.add('reveal');
+    if (cls) el.classList.add(cls);
+    el.dataset.delay = (i % 4) * 80;
+    revealObserver.observe(el);
+  });
 });
 
 // Form submit → WhatsApp
