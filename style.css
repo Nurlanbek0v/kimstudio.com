@@ -353,7 +353,7 @@ img { max-width: 100%; display: block; }
   width: 500px; height: 500px;
   top: 50%; left: 50%;
   margin: -250px 0 0 -250px;
-  border: 1px solid rgba(232,83,122,0.1);
+  border: 1px solid rgba(232,83,122,0.06);
   animation: ring-spin 30s linear infinite;
 }
 .hero-ring-1::before {
@@ -369,7 +369,7 @@ img { max-width: 100%; display: block; }
   width: 340px; height: 340px;
   top: 50%; left: 50%;
   margin: -170px 0 0 -170px;
-  border: 1px solid rgba(232,83,122,0.08);
+  border: 1px solid rgba(232,83,122,0.04);
   animation: ring-spin-rev 22s linear infinite;
 }
 .hero-ring-2::before {
