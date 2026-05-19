@@ -522,6 +522,35 @@ img { max-width: 100%; display: block; }
   display: block;
 }
 
+.stat-item {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 130px;
+}
+
+.stat-ring {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(-90deg);
+  pointer-events: none;
+}
+
+.stat-ring-track {
+  fill: none;
+  stroke: rgba(232,83,122,0.08);
+}
+
+.stat-ring-fill {
+  fill: none;
+  stroke: var(--pink);
+  stroke-linecap: round;
+  filter: drop-shadow(0 0 5px rgba(232,83,122,0.5));
+}
+
 /* ===== ABOUT ===== */
 .about { background: var(--dark); }
 

@@ -58,16 +58,24 @@ document.addEventListener('click', (e) => {
   }
 });
 
-// Animated counters
-function animateCounter(el, target, duration = 1800) {
-  let start = 0;
-  const step = (timestamp) => {
-    if (!start) start = timestamp;
-    const progress = Math.min((timestamp - start) / duration, 1);
-    const eased = 1 - Math.pow(1 - progress, 3);
-    el.textContent = Math.floor(eased * target);
-    if (progress < 1) requestAnimationFrame(step);
-    else el.textContent = target;
+// Animated counters with SVG ring
+const RING_R = 50;
+const RING_C = parseFloat((2 * Math.PI * RING_R).toFixed(2));
+
+function animateCounter(el, target, ring, duration = 1800) {
+  let start = null;
+  const step = (ts) => {
+    if (!start) start = ts;
+    const p = Math.min((ts - start) / duration, 1);
+    const e = 1 - Math.pow(1 - p, 3);
+    el.textContent = Math.floor(e * target);
+    if (ring) ring.style.strokeDashoffset = (RING_C * (1 - e)).toFixed(2);
+    if (p < 1) {
+      requestAnimationFrame(step);
+    } else {
+      el.textContent = target;
+      if (ring) ring.style.strokeDashoffset = '0';
+    }
   };
   requestAnimationFrame(step);
 }
@@ -79,14 +87,46 @@ const counterObserver = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
       const el = entry.target;
-      const target = parseInt(el.dataset.target);
-      animateCounter(el, target);
+      animateCounter(el, parseInt(el.dataset.target), el._ring);
       counterObserver.unobserve(el);
     }
   });
 }, observerOptions);
 
-document.querySelectorAll('.stat-number[data-target]').forEach(el => counterObserver.observe(el));
+// Inject SVG ring into each stat item and observe
+const NS = 'http://www.w3.org/2000/svg';
+const RING_SIZE = 2 * (RING_R + 10);
+
+document.querySelectorAll('.stat-number[data-target]').forEach(el => {
+  const item = el.closest('.stat-item') || el.parentElement;
+
+  const svg = document.createElementNS(NS, 'svg');
+  svg.setAttribute('class', 'stat-ring');
+  svg.setAttribute('width', RING_SIZE);
+  svg.setAttribute('height', RING_SIZE);
+  svg.setAttribute('viewBox', `0 0 ${RING_SIZE} ${RING_SIZE}`);
+
+  const cx = RING_SIZE / 2;
+
+  const track = document.createElementNS(NS, 'circle');
+  track.setAttribute('cx', cx); track.setAttribute('cy', cx);
+  track.setAttribute('r', RING_R); track.setAttribute('stroke-width', '2');
+  track.setAttribute('class', 'stat-ring-track');
+
+  const fill = document.createElementNS(NS, 'circle');
+  fill.setAttribute('cx', cx); fill.setAttribute('cy', cx);
+  fill.setAttribute('r', RING_R); fill.setAttribute('stroke-width', '2');
+  fill.setAttribute('class', 'stat-ring-fill');
+  fill.style.strokeDasharray = RING_C;
+  fill.style.strokeDashoffset = RING_C;
+
+  svg.appendChild(track);
+  svg.appendChild(fill);
+  item.appendChild(svg);
+  el._ring = fill;
+
+  counterObserver.observe(el);
+});
 
 // Reveal on scroll
 const revealObserver = new IntersectionObserver((entries) => {
