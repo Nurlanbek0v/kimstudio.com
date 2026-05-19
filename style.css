@@ -625,7 +625,7 @@ img { max-width: 100%; display: block; }
 
 .teacher-photo-wrap {
   width: 100%;
-  aspect-ratio: 3/4;
+  aspect-ratio: 1/1;
   overflow: hidden;
   position: relative;
 }
