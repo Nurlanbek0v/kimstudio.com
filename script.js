@@ -12,13 +12,28 @@
   }
 })();
 
-// Scroll progress bar
+// Scroll progress bar + depth tracking
 (function () {
   const bar = document.getElementById('scroll-bar');
-  if (!bar) return;
+  const milestones = [25, 50, 75, 100];
+  const reached = new Set();
+
   window.addEventListener('scroll', () => {
     const pct = window.scrollY / (document.documentElement.scrollHeight - window.innerHeight) * 100;
-    bar.style.width = Math.min(pct, 100) + '%';
+    if (bar) bar.style.width = Math.min(pct, 100) + '%';
+
+    milestones.forEach(m => {
+      if (!reached.has(m) && pct >= m) {
+        reached.add(m);
+        if (typeof gtag === 'function') {
+          gtag('event', 'scroll_depth_' + m, {
+            event_category: 'engagement',
+            event_label: m + '%',
+            value: m
+          });
+        }
+      }
+    });
   }, { passive: true });
 })();
 
