@@ -12,6 +12,16 @@
   }
 })();
 
+// Scroll progress bar
+(function () {
+  const bar = document.getElementById('scroll-bar');
+  if (!bar) return;
+  window.addEventListener('scroll', () => {
+    const pct = window.scrollY / (document.documentElement.scrollHeight - window.innerHeight) * 100;
+    bar.style.width = Math.min(pct, 100) + '%';
+  }, { passive: true });
+})();
+
 // Scrollspy
 (function () {
   const sections   = document.querySelectorAll('section[id]');
