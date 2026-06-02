@@ -1818,10 +1818,51 @@ body.light .hero-title {
   background-clip: text;
 }
 body.light .hero-tagline { color: rgba(13,5,8,0.6); }
+/* section tags */
+body.light .section-tag { color: var(--pink-dark); }
+
+/* about */
+body.light .about-text p,
+body.light .about-card,
+body.light .about-features li { color: rgba(13,5,8,0.8); }
+body.light .about-card { border-color: rgba(232,83,122,0.2); }
+body.light .logo-big span { color: var(--pink); }
+
+/* teachers */
+body.light .teacher-card { border-color: rgba(13,5,8,0.08); }
+body.light .teacher-info p { color: rgba(13,5,8,0.7); }
+body.light .teacher-styles { color: var(--pink-dark); border-color: rgba(232,83,122,0.4); }
+
+/* directions */
+body.light .direction-card { border-color: rgba(13,5,8,0.08); }
+
+/* show / rules / faq / contact */
 body.light .show-text p,
 body.light .show-list li,
 body.light .rule-item p,
 body.light .contact-item p,
 body.light .contact-item a,
 body.light .faq-answer p { color: rgba(13,5,8,0.8); }
+body.light .faq-item { border-color: rgba(13,5,8,0.08); }
+body.light .faq-question { color: var(--white); }
+
+/* form */
+body.light .form-group input,
+body.light .form-group select,
+body.light .form-group textarea {
+  background: rgba(13,5,8,0.04);
+  border-color: rgba(13,5,8,0.15);
+  color: var(--white);
+}
+body.light .form-group input::placeholder,
+body.light .form-group textarea::placeholder { color: var(--gray); }
+body.light .form-group select { color: var(--white); }
+
+/* footer */
+body.light .footer-brand p,
+body.light .footer-links a,
+body.light .footer-bottom p { color: rgba(13,5,8,0.55); }
+body.light .footer-bottom { border-color: rgba(13,5,8,0.08); }
+
+/* social */
 body.light .social-btn { border-color: rgba(13,5,8,0.2); color: rgba(13,5,8,0.75); }
