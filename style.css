@@ -1897,3 +1897,57 @@ body.light .form-note { color: var(--gray); }
 
 /* map border */
 body.light .map-embed { border-color: rgba(232,83,122,0.15); }
+
+/* ── stat numbers – more vivid on light bg ── */
+body.light .stat-number {
+  background: linear-gradient(135deg, var(--pink-dark) 0%, var(--pink) 100%);
+}
+
+/* ── white card surfaces + depth shadows ── */
+body.light .about-card {
+  background: rgba(255,255,255,0.85);
+  box-shadow: 0 3px 16px rgba(232,83,122,0.07);
+}
+body.light .about-card:hover {
+  background: #fff;
+  box-shadow: 0 8px 28px rgba(232,83,122,0.14);
+}
+
+body.light .teacher-card {
+  background: rgba(255,255,255,0.9);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+}
+body.light .teacher-card:hover {
+  box-shadow: 0 16px 40px rgba(232,83,122,0.15), 0 4px 12px rgba(0,0,0,0.05);
+}
+
+body.light .direction-card {
+  background: rgba(255,255,255,0.9);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+}
+body.light .direction-card::before { opacity: 0.4; }
+body.light .direction-card:hover {
+  box-shadow: 0 16px 40px rgba(var(--card-accent-rgb),0.18), 0 4px 12px rgba(0,0,0,0.06);
+}
+
+body.light .rule-item {
+  background: rgba(255,255,255,0.85);
+  border-color: rgba(232,83,122,0.1);
+  box-shadow: 0 2px 14px rgba(0,0,0,0.04);
+}
+body.light .rule-num {
+  background: linear-gradient(135deg, var(--pink), var(--pink-dark));
+}
+
+body.light .faq-item {
+  background: rgba(255,255,255,0.85);
+  border-color: rgba(232,83,122,0.1);
+  box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+}
+body.light .faq-item.open .faq-question { color: var(--pink-dark); }
+body.light .faq-item.open .faq-icon::before,
+body.light .faq-item.open .faq-icon::after { background: #fff; }
+body.light .faq-answer p strong { color: var(--pink-dark); }
+
+/* contact labels & footer */
+body.light .contact-item h4 { color: var(--pink-dark); }
