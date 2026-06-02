@@ -260,9 +260,9 @@
             requestAnimationFrame(() => card.classList.remove('teacher-hidden'));
           } else {
             card.classList.add('teacher-hidden');
-            card.addEventListener('transitionend', () => {
+            setTimeout(() => {
               if (card.classList.contains('teacher-hidden')) card.style.display = 'none';
-            }, { once: true });
+            }, 350);
           }
         });
       });
