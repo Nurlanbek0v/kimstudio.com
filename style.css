@@ -1871,3 +1871,29 @@ body.light .footer-bottom { border-color: rgba(13,5,8,0.08); }
 
 /* social */
 body.light .social-btn { border-color: rgba(13,5,8,0.2); color: rgba(13,5,8,0.75); }
+
+/* hero rings — make them more visible on light bg */
+body.light .hero-ring-1 { border-color: rgba(232,83,122,0.15); }
+body.light .hero-ring-2 { border-color: rgba(232,83,122,0.1); }
+
+/* stats rings */
+body.light .stat-ring-track { stroke: rgba(232,83,122,0.15); }
+body.light .stat-ring-fill  { filter: drop-shadow(0 0 4px rgba(232,83,122,0.3)); }
+
+/* show card — replace dark purple gradient with clean light card */
+body.light .show-card {
+  background: linear-gradient(135deg, #fff0f4, #fce4ee);
+  border-color: rgba(232,83,122,0.2);
+  box-shadow: 0 16px 48px rgba(232,83,122,0.08);
+}
+body.light .show-card h3 {
+  background: linear-gradient(135deg, var(--pink-dark), var(--pink));
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+
+/* contact form note */
+body.light .form-note { color: var(--gray); }
+
+/* map border */
+body.light .map-embed { border-color: rgba(232,83,122,0.15); }
