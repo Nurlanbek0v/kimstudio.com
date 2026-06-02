@@ -66,13 +66,28 @@
     </div>
   </section>
 
+  <!-- FILTER -->
+  <div class="teacher-filter-wrap">
+    <div class="container">
+      <div class="teacher-filter">
+        <button class="filter-btn active" data-filter="all">Все</button>
+        <button class="filter-btn" data-filter="hiphop">HIP-HOP</button>
+        <button class="filter-btn" data-filter="kpop">K-POP</button>
+        <button class="filter-btn" data-filter="choreo">CHOREO</button>
+        <button class="filter-btn" data-filter="afro">AFRO</button>
+        <button class="filter-btn" data-filter="girly">GIRLY</button>
+        <button class="filter-btn" data-filter="baby">BABY</button>
+      </div>
+    </div>
+  </div>
+
   <!-- TEACHERS GRID -->
   <section class="teachers section" style="padding-top: 40px;">
     <div class="container">
       <div class="teachers-grid">
 
         <!-- FOUNDER -->
-        <div class="teacher-card teacher-card--founder">
+        <div class="teacher-card teacher-card--founder" data-styles="hiphop choreo kpop">
           <div class="teacher-photo-wrap">
             <img src="teacher-alisha.webp" alt="Ким Алиша Ринатовна" class="teacher-photo" loading="lazy" />
             <span class="founder-badge">Основатель</span>
@@ -88,7 +103,7 @@
           </div>
         </div>
 
-        <div class="teacher-card">
+        <div class="teacher-card" data-styles="choreo afro">
           <div class="teacher-photo-wrap">
             <img src="teacher-sagyun2.webp" alt="Анарбекова Сагын" class="teacher-photo" loading="lazy" />
           </div>
@@ -103,7 +118,7 @@
           </div>
         </div>
 
-        <div class="teacher-card">
+        <div class="teacher-card" data-styles="hiphop">
           <div class="teacher-photo-wrap">
             <img src="teacher-riana.webp" alt="Ринат Риана" class="teacher-photo" loading="lazy" />
           </div>
@@ -118,7 +133,7 @@
           </div>
         </div>
 
-        <div class="teacher-card">
+        <div class="teacher-card" data-styles="baby">
           <div class="teacher-photo-wrap">
             <img src="teacher-bermet3.webp" alt="Эсенгельдиева Бермет" class="teacher-photo" loading="lazy" />
           </div>
@@ -133,7 +148,7 @@
           </div>
         </div>
 
-        <div class="teacher-card">
+        <div class="teacher-card" data-styles="choreo afro">
           <div class="teacher-photo-wrap">
             <img src="teacher-arizat.webp" alt="Эсенгельдиева Аризат" class="teacher-photo" loading="lazy" />
           </div>
@@ -148,7 +163,7 @@
           </div>
         </div>
 
-        <div class="teacher-card">
+        <div class="teacher-card" data-styles="girly">
           <div class="teacher-photo-wrap">
             <img src="teacher-aiytunuk.webp" alt="Таалайбекова Айтунук" class="teacher-photo" loading="lazy" />
           </div>
@@ -163,7 +178,7 @@
           </div>
         </div>
 
-        <div class="teacher-card">
+        <div class="teacher-card" data-styles="kpop">
           <div class="teacher-photo-wrap">
             <img src="teacher-yasmin.webp" alt="Ушурова Ясмин" class="teacher-photo" loading="lazy" />
           </div>
@@ -231,6 +246,28 @@
     </a>
   </div>
 
+  <script>
+    document.querySelectorAll('.filter-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const filter = btn.dataset.filter;
+        document.querySelectorAll('.teacher-card').forEach(card => {
+          const styles = card.dataset.styles || '';
+          const matches = filter === 'all' || styles.split(' ').includes(filter);
+          if (matches) {
+            card.style.display = '';
+            requestAnimationFrame(() => card.classList.remove('teacher-hidden'));
+          } else {
+            card.classList.add('teacher-hidden');
+            card.addEventListener('transitionend', () => {
+              if (card.classList.contains('teacher-hidden')) card.style.display = 'none';
+            }, { once: true });
+          }
+        });
+      });
+    });
+  </script>
   <script src="script.js"></script>
 </body>
 </html>

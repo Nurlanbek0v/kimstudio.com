@@ -652,6 +652,42 @@ img { max-width: 100%; display: block; }
 /* ===== TEACHERS ===== */
 .teachers { background: var(--dark-2); }
 
+.teacher-filter-wrap {
+  background: var(--dark);
+  padding: 0 0 32px;
+}
+.teacher-filter {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+}
+.filter-btn {
+  background: var(--dark-2);
+  border: 1px solid rgba(255,255,255,0.08);
+  color: var(--gray);
+  font-family: 'Inter', sans-serif;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  padding: 8px 20px;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: background 0.25s ease, border-color 0.25s ease, color 0.25s ease, transform 0.2s ease;
+}
+.filter-btn:hover {
+  border-color: rgba(232,83,122,0.35);
+  color: var(--text);
+  transform: translateY(-1px);
+}
+.filter-btn.active {
+  background: linear-gradient(135deg, var(--pink), var(--pink-dark));
+  border-color: transparent;
+  color: var(--white);
+  box-shadow: 0 4px 16px rgba(232,83,122,0.35);
+}
+
 .teachers-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -663,7 +699,12 @@ img { max-width: 100%; display: block; }
   border-radius: var(--radius);
   overflow: hidden;
   border: 1px solid rgba(255,255,255,0.06);
-  transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
+  transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease, opacity 0.35s ease;
+}
+.teacher-card.teacher-hidden {
+  opacity: 0;
+  transform: scale(0.94);
+  pointer-events: none;
 }
 .teacher-card:hover {
   border-color: rgba(232,83,122,0.25);
