@@ -1814,6 +1814,7 @@ body.light .hero-title {
   background: linear-gradient(135deg, var(--white) 25%, var(--pink) 65%, var(--pink-dark) 100%);
   -webkit-background-clip: text;
   background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 body.light .hero-sub    { color: var(--pink-dark); opacity: 0.75; }
 body.light .hero-tagline { color: rgba(13,5,8,0.55); }
@@ -1890,6 +1891,7 @@ body.light .show-card h3 {
   background: linear-gradient(135deg, var(--pink-dark), var(--pink));
   -webkit-background-clip: text;
   background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 /* contact form note */
@@ -1901,6 +1903,9 @@ body.light .map-embed { border-color: rgba(232,83,122,0.15); }
 /* ── stat numbers – more vivid on light bg ── */
 body.light .stat-number {
   background: linear-gradient(135deg, var(--pink-dark) 0%, var(--pink) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 /* ── white card surfaces + depth shadows ── */
@@ -1937,6 +1942,9 @@ body.light .rule-item {
 }
 body.light .rule-num {
   background: linear-gradient(135deg, var(--pink), var(--pink-dark));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 body.light .faq-item {
