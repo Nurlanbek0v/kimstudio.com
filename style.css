@@ -1779,9 +1779,9 @@ body.light {
   --dark:   #fdf6f8;
   --dark-2: #f5eaef;
   --dark-3: #ede0e5;
-  --white:  #1a0a10;
-  --text:   #3d2030;
-  --gray:   #8a6070;
+  --white:  #0d0508;
+  --text:   #1a0a10;
+  --gray:   #4a2535;
   --shadow: 0 8px 32px rgba(0,0,0,0.10);
   --glow-pink: 0 0 40px rgba(232,83,122,0.12);
 }
@@ -1793,7 +1793,7 @@ body.light .nav-links {
   background: rgba(253,246,248,0.97);
   box-shadow: -4px 0 40px rgba(0,0,0,0.12), -1px 0 0 rgba(232,83,122,0.12);
 }
-body.light .nav-links a { color: rgba(30,10,20,0.55); }
+body.light .nav-links a { color: rgba(13,5,8,0.7); }
 body.light .nav-links a:hover,
 body.light .nav-links a.active { color: var(--white); }
 body.light .burger span { background: var(--white); }
@@ -1802,7 +1802,7 @@ body.light .theme-switch {
   border-color: rgba(0,0,0,0.1);
   box-shadow: 0 4px 20px rgba(0,0,0,0.12);
 }
-body.light .theme-switch-label { color: rgba(30,10,20,0.5); }
+body.light .theme-switch-label { color: rgba(13,5,8,0.7); }
 body.light .theme-switch-track {
   background: rgba(0,0,0,0.06);
   border-color: rgba(0,0,0,0.12);
@@ -1817,11 +1817,11 @@ body.light .hero-title {
   -webkit-background-clip: text;
   background-clip: text;
 }
-body.light .hero-tagline { color: rgba(30,10,20,0.45); }
+body.light .hero-tagline { color: rgba(13,5,8,0.6); }
 body.light .show-text p,
 body.light .show-list li,
 body.light .rule-item p,
 body.light .contact-item p,
 body.light .contact-item a,
-body.light .faq-answer p { color: rgba(30,10,20,0.65); }
-body.light .social-btn { border-color: rgba(30,10,20,0.15); color: rgba(30,10,20,0.65); }
+body.light .faq-answer p { color: rgba(13,5,8,0.8); }
+body.light .social-btn { border-color: rgba(13,5,8,0.2); color: rgba(13,5,8,0.75); }
