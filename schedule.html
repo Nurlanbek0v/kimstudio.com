@@ -259,7 +259,7 @@
   </style>
 </head>
 <body>
-
+<script>if(localStorage.getItem('kimstudio-theme')==='light')document.body.classList.add('light');</script>
   <!-- LOADER -->
   <div id="loader">
     <div class="loader-content">
@@ -291,6 +291,14 @@
       </button>
     </div>
   </nav>
+
+  <label class="theme-switch" title="Переключить тему">
+    <input type="checkbox" id="themeToggle" />
+    <span class="theme-switch-track">
+      <span class="theme-switch-thumb"></span>
+    </span>
+    <span class="theme-switch-label">Тема</span>
+  </label>
 
   <!-- HERO -->
   <section class="sched-hero">

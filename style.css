@@ -230,6 +230,7 @@ img { max-width: 100%; display: block; }
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 16px;
 }
 
 .nav-brand { display: flex; align-items: center; }
@@ -257,7 +258,9 @@ img { max-width: 100%; display: block; }
 
 .nav-links {
   display: flex;
-  gap: 32px;
+  gap: 24px;
+  flex-wrap: nowrap;
+  overflow: visible;
 }
 .nav-links a {
   font-size: 0.88rem;
@@ -1625,6 +1628,8 @@ img { max-width: 100%; display: block; }
   .rules-grid { grid-template-columns: repeat(2, 1fr); }
   .show-content { grid-template-columns: 1fr; gap: 40px; }
   .show-card { max-width: 360px; }
+  .nav-links { gap: 16px; }
+  .nav-links a { font-size: 0.8rem; }
 }
 
 @media (max-width: 900px) {
@@ -1696,3 +1701,121 @@ img { max-width: 100%; display: block; }
   .about-cards { grid-template-columns: 1fr; }
   .payment-info-grid { grid-template-columns: 1fr; }
 }
+
+/* ===== THEME SWITCH ===== */
+.theme-switch {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  z-index: 200;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(15,10,13,0.85);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 99px;
+  padding: 6px 12px 6px 6px;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+  transition: box-shadow 0.25s ease, border-color 0.25s ease;
+  user-select: none;
+}
+.theme-switch:hover {
+  border-color: rgba(232,83,122,0.4);
+  box-shadow: 0 4px 24px rgba(232,83,122,0.2);
+}
+.theme-switch input { display: none; }
+.theme-switch-label {
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: rgba(255,255,255,0.55);
+  letter-spacing: 0.5px;
+  white-space: nowrap;
+}
+
+.theme-switch-track {
+  width: 44px;
+  height: 24px;
+  border-radius: 99px;
+  background: rgba(255,255,255,0.08);
+  border: 1.5px solid rgba(255,255,255,0.15);
+  position: relative;
+  flex-shrink: 0;
+  transition: background 0.35s ease, border-color 0.35s ease;
+}
+.theme-switch-thumb {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--pink);
+  position: absolute;
+  top: 50%;
+  left: 2px;
+  transform: translateY(-50%);
+  transition: left 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  line-height: 1;
+}
+.theme-switch-thumb::after { content: '🌙'; }
+
+.theme-switch input:checked + .theme-switch-track {
+  background: rgba(255,210,70,0.15);
+  border-color: rgba(255,210,70,0.45);
+}
+.theme-switch input:checked + .theme-switch-track .theme-switch-thumb {
+  left: calc(100% - 20px);
+}
+.theme-switch input:checked + .theme-switch-track .theme-switch-thumb::after {
+  content: '☀️';
+}
+
+/* ===== LIGHT THEME ===== */
+body.light {
+  --dark:   #fdf6f8;
+  --dark-2: #f5eaef;
+  --dark-3: #ede0e5;
+  --white:  #1a0a10;
+  --text:   #3d2030;
+  --gray:   #8a6070;
+  --shadow: 0 8px 32px rgba(0,0,0,0.10);
+  --glow-pink: 0 0 40px rgba(232,83,122,0.12);
+}
+body.light .navbar.scrolled {
+  background: rgba(253,246,248,0.95);
+  box-shadow: 0 2px 0 rgba(232,83,122,0.15), 0 4px 32px rgba(0,0,0,0.08);
+}
+body.light .nav-links {
+  background: rgba(253,246,248,0.97);
+  box-shadow: -4px 0 40px rgba(0,0,0,0.12), -1px 0 0 rgba(232,83,122,0.12);
+}
+body.light .nav-links a { color: rgba(30,10,20,0.55); }
+body.light .nav-links a:hover,
+body.light .nav-links a.active { color: var(--white); }
+body.light .burger span { background: var(--white); }
+body.light .theme-switch {
+  background: rgba(253,246,248,0.9);
+  border-color: rgba(0,0,0,0.1);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.12);
+}
+body.light .theme-switch-label { color: rgba(30,10,20,0.5); }
+body.light .theme-switch-track {
+  background: rgba(0,0,0,0.06);
+  border-color: rgba(0,0,0,0.12);
+}
+body.light #loader { background: var(--dark); }
+body.light .btn-outline {
+  border-color: rgba(30,10,20,0.25);
+  color: var(--white);
+}
+body.light .show-text p,
+body.light .show-list li,
+body.light .rule-item p,
+body.light .contact-item p,
+body.light .contact-item a,
+body.light .faq-answer p { color: rgba(30,10,20,0.65); }
+body.light .social-btn { border-color: rgba(30,10,20,0.15); color: rgba(30,10,20,0.65); }

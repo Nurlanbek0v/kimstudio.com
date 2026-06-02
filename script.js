@@ -1,3 +1,14 @@
+// Theme toggle
+(function () {
+  const toggle = document.getElementById('themeToggle');
+  if (!toggle) return;
+  if (localStorage.getItem('kimstudio-theme') === 'light') toggle.checked = true;
+  toggle.addEventListener('change', () => {
+    document.body.classList.toggle('light', toggle.checked);
+    localStorage.setItem('kimstudio-theme', toggle.checked ? 'light' : 'dark');
+  });
+})();
+
 // Loader
 (function () {
   const loader = document.getElementById('loader');
