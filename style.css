@@ -1812,6 +1812,12 @@ body.light .btn-outline {
   border-color: rgba(30,10,20,0.25);
   color: var(--white);
 }
+body.light .hero-title {
+  background: linear-gradient(135deg, var(--white) 30%, var(--pink) 70%, var(--pink-dark) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+body.light .hero-tagline { color: rgba(30,10,20,0.45); }
 body.light .show-text p,
 body.light .show-list li,
 body.light .rule-item p,
